@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Menu, Image } from 'semantic-ui-react'
+import logo from './logo.png';
 
-class AppNavbar extends Component {
+export default class AppNavbar extends Component {
+  state = { activeItem: 'main' };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
   render() {
+    const { activeItem } = this.state;
+    
     return (
-      <Navbar color="faded" light>
-        <NavbarBrand href="/">color-ui</NavbarBrand>
-        <Nav>
-          <NavItem>
-            <NavLink href="/">
-              Sign In
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Navbar>
+      <Menu stackable>
+        <Menu.Item
+          name='main' 
+          active={activeItem === 'main'} 
+          onClick={this.handleItemClick}
+        >
+            <Image src={logo}
+            size='mini'/>
+            color-ui
+        </Menu.Item>
+
+        <Menu.Item 
+          name='sign-in' 
+          active={activeItem === 'sign-in'} 
+          onClick={this.handleItemClick}
+        >
+          Sign-in
+        </Menu.Item>
+      </Menu>
     );
   }
 }
-
-export default AppNavbar;

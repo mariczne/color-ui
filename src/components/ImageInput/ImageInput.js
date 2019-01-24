@@ -1,20 +1,16 @@
 import React from 'react';
-import { Row, Col, Input, Card, CardBody, InputGroup, InputGroupAddon, Button } from 'reactstrap';
+import { Segment, Input } from 'semantic-ui-react';
 
 const ImageInput = ({ onInputChange, onButtonSubmit }) => {
     return (
-      <Row>
-        <Col sm="10" md={{ size: 8, offset: 2 }}>
-          <Card>
-            <CardBody>
-              <InputGroup>
-                <Input placeholder="Image URL" onChange={ onInputChange }/>
-                <InputGroupAddon addonType="append"><Button color="primary" onClick={ onButtonSubmit }>Submit</Button></InputGroupAddon>
-              </InputGroup>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+          <Segment>
+              <Input
+                action={{ color: 'teal', labelPosition: 'left', icon: 'upload', content: 'Send', onClick: onButtonSubmit }}
+                placeholder='Image URL'
+                style={{width: '100%'}}
+                onChange={ onInputChange }
+              />
+          </Segment>
     );
 }
 

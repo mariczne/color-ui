@@ -1,27 +1,44 @@
 import React from 'react';
-import { Row, Col, Card, CardBody, ListGroup } from 'reactstrap';
-import Color from './Color.js';
+import { Segment, Grid, Image } from 'semantic-ui-react';
+import ColorsChart from './ColorsChart'
 
 const Results = ({ imageUrl, colorsArray }) => {
     if (!imageUrl || colorsArray.length < 1) {
       return <div />
     }
 
-    return (
-      <Row>
-        <Col sm="10" md={{ size: 8, offset: 2 }}>
-          <Card className>
-            <CardBody>
-              <img alt='' src={imageUrl} className="img-fluid mx-auto d-block"/>
-              <ListGroup>
-                {colorsArray.map((color, index) => (
-                  <Color key={index} data={color} />
-                ))}
-              </ListGroup>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+    const prepareData = (data) => {
+      const preparedData = {
+        labels: [],
+        datasets: [{data}]
+      }
+
+      preparedData.labels = data.map((color) => {
+        return `${color.w3c.name.replace(/([A-Z])/g, ' $1').trim()} (${color.raw_hex.toUpperCase()})`;
+      })
+      preparedData.datasets[0].data = data.map((color) => {
+        return Math.round(color.value * 100);
+      })
+      preparedData.datasets[0].backgroundColor = data.map((color) => {
+        return color.raw_hex;
+      })
+      preparedData.datasets[0].label = 'Color';
+      
+      return preparedData;
+    }
+
+    return ( 
+      <Segment>
+        <Image alt='' src={imageUrl} rounded style={{maxHeight: '75vh', padding: '20px'}} />
+        <Grid columns={2} relaxed='very'>
+          <Grid.Column>
+            <ColorsChart data={prepareData(colorsArray)}/>
+          </Grid.Column>
+          <Grid.Column>
+
+          </Grid.Column>
+        </Grid>
+      </Segment>
     );
 }
 
