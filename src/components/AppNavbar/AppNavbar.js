@@ -9,7 +9,7 @@ class AppNavbar extends Component {
         <Nav>
           <NavItem>
             <NavLink href="/">
-              Sign Out
+              Sign In
             </NavLink>
           </NavItem>
         </Nav>

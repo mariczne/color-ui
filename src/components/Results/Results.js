@@ -10,10 +10,9 @@ const Results = ({ imageUrl, colorsArray }) => {
     return (
       <Row>
         <Col sm="10" md={{ size: 8, offset: 2 }}>
-          <Card>
+          <Card className>
             <CardBody>
               <img alt='' src={imageUrl} className="img-fluid mx-auto d-block"/>
-              <p>W3 colors describing the image:</p>
               <ListGroup>
                 {colorsArray.map((color, index) => (
                   <Color key={index} data={color} />
