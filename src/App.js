@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar from './components/AppNavbar/AppNavbar';
 import ImageInput from './components/ImageInput/ImageInput';
 import Results from './components/Results/Results';
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react';
 import Clarifai from 'clarifai';
 
 const clarifaiApp = new Clarifai.App({
