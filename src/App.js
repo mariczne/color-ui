@@ -17,7 +17,7 @@ class App extends Component {
       imageUrl: '',
       colors: [],
       route: 'landing'
-    }
+    };
   }
 
   onInputChange = (event) => {
@@ -41,13 +41,19 @@ class App extends Component {
 
   render() {
     return (
-      <Grid container className="App">
-      <AppNavbar />
-        <Container text style={{ marginTop: '6em' }}>
-            <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-            <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
-        </Container>
+      <Container fluid>
+      <Grid className="App" style={{paddingLeft: '0', paddingRight: '0'}}>
+        <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
+          <AppNavbar />
+          <Grid container style={{marginTop: '2rem'}}>
+            <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
+              <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+              <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
+            </Grid.Column>
+          </Grid>
+        </Grid.Column>
       </Grid>
+      </Container>
     );
   }
 }

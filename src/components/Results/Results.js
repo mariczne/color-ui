@@ -33,26 +33,26 @@ class Results extends Component {
     }
     
     return (
-      <Segment>
-      <Grid container divided="vertically">
-        <Grid.Row>
-          <Container>
-            <Image alt='' src={this.props.imageUrl} rounded centered style={{maxHeight: '450px', width: 'auto'}}/>
-          </Container>
-        </Grid.Row>
-        <Grid.Row centered>
-          <Grid divided columns={2} container stackable>
-            <Grid.Row stretched>
-              <Grid.Column>
-                <ColorsChart data={this.prepareData(this.props.colorsArray)} />
-              </Grid.Column>
-              <Grid.Column>
-                <ColorsList data={this.props.colorsArray} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Grid.Row>
-      </Grid>
+      <Segment style={{marginBottom: '1rem'}}>
+        <Grid divided="vertically">
+          <Grid.Row>
+            <Container fluid>
+              <Image alt='' src={this.props.imageUrl} rounded centered style={{maxHeight: '450px', width: 'auto'}}/>
+            </Container>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Grid divided columns={2} container stackable>
+              <Grid.Row stretched>
+                <Grid.Column>
+                  <ColorsChart data={this.prepareData(this.props.colorsArray)} />
+                </Grid.Column>
+                <Grid.Column>
+                  <ColorsList data={this.props.colorsArray} />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Row>
+        </Grid>
       </Segment>
     );
   }

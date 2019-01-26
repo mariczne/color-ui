@@ -6,9 +6,9 @@ class ImageInput extends Component {
     return (
       <Segment>
         <Input
-          action={{ color: 'teal', labelPosition: 'left', icon: 'upload', content: 'Send', onClick: this.props.onButtonSubmit }}
+          action={{ color: 'teal', labelPosition: 'left', icon: 'file image', content: 'Send', onClick: this.props.onButtonSubmit }}
           placeholder='Image URL'
-          style={{width: '100%'}}
+          fluid
           onChange={ this.props.onInputChange }
         />
       </Segment>
