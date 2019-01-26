@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
-import { Menu, Image } from 'semantic-ui-react'
+import { Menu, Image, Container, Icon } from 'semantic-ui-react'
 import logo from './logo.png';
 
-export default class AppNavbar extends Component {
-  state = { activeItem: 'main' };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
+class AppNavbar extends Component {
   render() {
-    const { activeItem } = this.state;
-    
     return (
-      <Menu stackable>
-        <Menu.Item
-          name='main' 
-          active={activeItem === 'main'} 
-          onClick={this.handleItemClick}
-        >
-            <Image src={logo}
-            size='mini'/>
-            color-ui
-        </Menu.Item>
+      <Menu borderless fixed='top'>
+        <Container>
+          <Menu.Item as='a'
+            header
+          >
+              <Image src={logo}
+              size='mini' style={{ marginRight: '1em' }}/>
+              color-ui
+          </Menu.Item>
 
-        <Menu.Item 
-          name='sign-in' 
-          active={activeItem === 'sign-in'} 
-          onClick={this.handleItemClick}
-        >
-          Sign-in
-        </Menu.Item>
+          <Menu.Item
+            position='right'
+            href='//github.com/mariczne/color-ui'
+          >
+            <Icon name='github' size='large' fitted />
+          </Menu.Item>
+        </Container>
       </Menu>
     );
   }
 }
+
+export default AppNavbar;

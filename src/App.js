@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar from './components/AppNavbar/AppNavbar';
 import ImageInput from './components/ImageInput/ImageInput';
 import Results from './components/Results/Results';
-import { Container } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 import Clarifai from 'clarifai';
 
 const clarifaiApp = new Clarifai.App({
@@ -41,13 +41,13 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid className="App">
+      <Grid container className="App">
       <AppNavbar />
-        <Container text>
-          <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-          <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
+        <Container text style={{ marginTop: '6em' }}>
+            <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+            <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
         </Container>
-      </Container>
+      </Grid>
     );
   }
 }
