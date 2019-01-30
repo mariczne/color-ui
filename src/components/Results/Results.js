@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Grid, Image, Container } from 'semantic-ui-react';
+import { Segment, Grid, Image } from 'semantic-ui-react';
 import ColorsChart from './ColorsChart';
 import ColorsList from './ColorsList';
 
@@ -34,24 +34,20 @@ class Results extends Component {
     
     return (
       <Segment style={{marginBottom: '1rem'}}>
-        <Grid divided="vertically">
-          <Grid.Row>
-            <Container fluid>
-              <Image alt='' src={this.props.imageUrl} rounded centered style={{maxHeight: '450px', width: 'auto'}}/>
-            </Container>
-          </Grid.Row>
-          <Grid.Row centered>
-            <Grid divided columns={2} container stackable>
-              <Grid.Row stretched>
-                <Grid.Column>
-                  <ColorsChart data={this.prepareData(this.props.colorsArray)} />
-                </Grid.Column>
-                <Grid.Column>
-                  <ColorsList data={this.props.colorsArray} />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Row>
+        <Grid columns={2} stackable stretched>
+          <Grid.Column width={10}>
+            <Segment>
+              <Image alt='' src={this.props.imageUrl} rounded fluid centered style={{maxHeight: '450px', width: 'auto'}}/>
+            </Segment> 
+          </Grid.Column>
+          <Grid.Column width={6} stretched>
+            <Segment style={{height: '50%'}}>
+              <ColorsList data={this.props.colorsArray} />    
+            </Segment>
+            <Segment style={{height: '50%'}}>
+              <ColorsChart data={this.prepareData(this.props.colorsArray)} />
+            </Segment>
+          </Grid.Column>
         </Grid>
       </Segment>
     );

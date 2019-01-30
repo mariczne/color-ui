@@ -5,7 +5,15 @@ import { Pie } from 'react-chartjs-2';
 class ColorsChart extends Component {
   render() {
     return (
-      <div className="chart" style={{height: '200px'}}>
+      <div 
+        className="chart" 
+        style={{
+          position: 'relative',
+          margin: 'auto',
+          height: '100%',
+          width: '100%'
+        }}
+      >
         <Pie 
           data={this.props.data}
           options={{

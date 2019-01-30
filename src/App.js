@@ -22,7 +22,7 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-  }
+  };
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
@@ -31,28 +31,28 @@ class App extends Component {
       this.state.input)
     .then(response => this.passColors(response),
       (err) => console.log(err));
-  }
+  };
 
   passColors = (response) => {
     const colors = response.outputs[0].data.colors;
     colors.sort((a, b) => b.value - a.value);
     this.setState({colors: colors});
-  }
+  };
 
   render() {
     return (
       <Container fluid>
-      <Grid className="App" style={{paddingLeft: '0', paddingRight: '0'}}>
-        <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
-          <AppNavbar />
-          <Grid container style={{marginTop: '2rem'}}>
-            <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
-              <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-              <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
-            </Grid.Column>
-          </Grid>
-        </Grid.Column>
-      </Grid>
+        <Grid className="App" style={{paddingLeft: '0', paddingRight: '0'}}>
+          <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
+            <AppNavbar />
+            <Grid container style={{marginTop: '2rem'}}>
+              <Grid.Column style={{paddingLeft: '0', paddingRight: '0'}}>
+                <ImageInput onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+                <Results imageUrl={this.state.imageUrl} colorsArray={this.state.colors}/>
+              </Grid.Column>
+            </Grid>
+          </Grid.Column>
+        </Grid>
       </Container>
     );
   }

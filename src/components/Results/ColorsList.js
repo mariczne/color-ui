@@ -12,13 +12,13 @@ class ColorsList extends Component {
 
   render() {
     return (
-        <Table compact celled size={"small"} unstackable verticalAlign={"middle"}>
-          <Table.Body>
-            {this.props.data.map((color, index) => (
-              <Color key={index} data={color} />
-            ))}
-          </Table.Body>
-        </Table>
+      <Table compact celled size={"small"} unstackable verticalAlign={"middle"}>
+        <Table.Body>
+          {this.props.data.map((color, index) => (
+            <Color key={index} data={color} />
+          ))}
+        </Table.Body>
+      </Table>
     );
   }
 }
