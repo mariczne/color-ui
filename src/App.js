@@ -16,6 +16,7 @@ class App extends Component {
       input: '',
       imageUrl: '',
       colors: [],
+      loading: false,
     };
   }
 
@@ -25,7 +26,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     const { input } = this.state;
-    this.setState({ imageUrl: input });
+    this.setState({ imageUrl: input, colors: [], loading: true });
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, input)
       .then(response => this.passColors(response),
         // eslint-disable-next-line no-console
@@ -35,11 +36,11 @@ class App extends Component {
   passColors = (response) => {
     const { colors } = response.outputs[0].data;
     colors.sort((a, b) => b.value - a.value);
-    this.setState({ colors });
+    this.setState({ colors, loading: false });
   };
 
   render() {
-    const { imageUrl, colors } = this.state;
+    const { imageUrl, colors, loading } = this.state;
     return (
       <Container fluid>
         <Grid className="App" style={{ paddingLeft: '0', paddingRight: '0' }}>
@@ -51,7 +52,7 @@ class App extends Component {
                   onInputChange={this.onInputChange}
                   onButtonSubmit={this.onButtonSubmit}
                 />
-                <Results imageUrl={imageUrl} colorsArray={colors} />
+                <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} />
               </Grid.Column>
             </Grid>
           </Grid.Column>

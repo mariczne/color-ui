@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
-
 const ColorsChart = (props) => {
   const { data } = props;
   return (

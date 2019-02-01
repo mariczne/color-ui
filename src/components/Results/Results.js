@@ -22,9 +22,9 @@ class Results extends Component {
   }
 
   render() {
-    const { imageUrl, colorsArray } = this.props;
+    const { imageUrl, colorsArray, loading } = this.props;
 
-    if (!imageUrl || colorsArray.length < 1) {
+    if (!imageUrl && colorsArray.length < 1) {
       return null;
     }
 
@@ -32,15 +32,15 @@ class Results extends Component {
       <Segment style={{ marginBottom: '1rem' }}>
         <Grid columns={2} stackable stretched>
           <Grid.Column width={10}>
-            <Segment style={{ display: 'flex', alignItems: 'center' }}>
+            <Segment style={{ display: 'flex', alignItems: 'center' }} loading={loading}>
               <Image alt="" src={imageUrl} rounded fluid centered style={{ maxHeight: '450px', width: 'auto' }} />
             </Segment>
           </Grid.Column>
           <Grid.Column width={6} stretched>
-            <Segment style={{ height: '50%' }}>
+            <Segment style={{ height: '50%' }} loading={loading}>
               <ColorsList data={colorsArray} />
             </Segment>
-            <Segment style={{ height: '50%' }}>
+            <Segment style={{ height: '50%' }} loading={loading}>
               <ColorsChart data={this.prepareData(colorsArray)} />
             </Segment>
           </Grid.Column>

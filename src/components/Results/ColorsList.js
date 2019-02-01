@@ -4,6 +4,11 @@ import Color from './Color';
 
 const ColorsList = (props) => {
   const { data } = props;
+
+  if (data.length < 1) {
+    return <div style={{ height: '100px' }} />;
+  }
+
   return (
     <Table compact celled size="small" unstackable verticalAlign="middle">
       <Table.Body>
