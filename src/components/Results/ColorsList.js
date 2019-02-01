@@ -13,7 +13,6 @@ const ColorsList = (props) => {
     <Table compact celled size="small" unstackable verticalAlign="middle">
       <Table.Body>
         {data.map((color, index) => (
-          // eslint-disable-next-line react/no-array-index-key
           <Color key={index} data={color} />
         ))}
       </Table.Body>

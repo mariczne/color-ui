@@ -29,7 +29,6 @@ class App extends Component {
     this.setState({ imageUrl: input, colors: [], loading: true });
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, input)
       .then(response => this.passColors(response),
-        // eslint-disable-next-line no-console
         err => console.error(err));
   };
 
