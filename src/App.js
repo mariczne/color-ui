@@ -6,7 +6,7 @@ import ImageInput from './components/ImageInput/ImageInput';
 import Results from './components/Results/Results';
 
 const clarifaiApp = new Clarifai.App({
-  apiKey: '1e134ae8b9894180bfffd13aa9498509', // do zmiany na zmienna srodowiskowa
+  apiKey: process.env.REACT_APP_API_KEY,
 });
 
 class App extends Component {
