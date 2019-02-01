@@ -16,6 +16,8 @@ class Results extends Component {
 
     preparedData.datasets[0].backgroundColor = data.map(color => color.raw_hex);
 
+    preparedData.datasets[0].hoverBackgroundColor = [...preparedData.datasets[0].backgroundColor];
+
     preparedData.datasets[0].label = 'Color';
 
     return preparedData;

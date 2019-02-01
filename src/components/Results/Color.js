@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 const Color = (props) => {
   const { data } = props;
   return (
-    <Table.Row style={{ backgroundColor: data.raw_hex, color: 'white' }}>
+    <Table.Row style={{ backgroundColor: data.raw_hex, color: 'white', textShadow: '0 0 3px black' }}>
       <Table.Cell>
         {`${Math.round(data.value * 100)}%`}
       </Table.Cell>
