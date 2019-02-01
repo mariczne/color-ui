@@ -19,6 +19,9 @@
 .env.production.local
 .directory
 
+# first README created by create-react-app
+README-cra.md 
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
