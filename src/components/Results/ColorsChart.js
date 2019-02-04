@@ -27,6 +27,12 @@ const ColorsChart = (props) => {
           responsive: true,
           maintainAspectRatio: false,
           aspectRatio: 1,
+          elements: {
+            arc: {
+              borderColor: '#dedede',
+              borderWidth: 1
+            }
+          }
         }}
       />
     </div>
