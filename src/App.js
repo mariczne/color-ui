@@ -4,6 +4,7 @@ import Clarifai from 'clarifai';
 import AppNavbar from './components/AppNavbar/AppNavbar';
 import ImageInput from './components/ImageInput/ImageInput';
 import Results from './components/Results/Results';
+import Jumbotron from './components/Jumbotron';
 
 const clarifaiApp = new Clarifai.App({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -46,13 +47,20 @@ class App extends Component {
           <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
             <AppNavbar />
             <Grid container style={{ marginTop: '2rem' }}>
-              <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
-                <ImageInput
-                  onInputChange={this.onInputChange}
-                  onButtonSubmit={this.onButtonSubmit}
-                />
-                <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} />
+            <Grid.Row>
+              <Grid.Column>
+                <Jumbotron />
               </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
+                  <ImageInput
+                    onInputChange={this.onInputChange}
+                    onButtonSubmit={this.onButtonSubmit}
+                  />
+                  <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} />
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
           </Grid.Column>
         </Grid>
