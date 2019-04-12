@@ -46,12 +46,12 @@ class App extends Component {
         <Grid className="App" style={{ paddingLeft: '0', paddingRight: '0' }}>
           <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
             <AppNavbar />
-            <Grid container style={{ marginTop: '2rem' }}>
-            <Grid.Row>
-              <Grid.Column>
+            <Grid container style={{ marginTop: '3rem' }}>
+            {/* <Grid.Row>
+              <Grid.Column> */}
                 <Jumbotron />
-              </Grid.Column>
-            </Grid.Row>
+              {/* </Grid.Column>
+            </Grid.Row> */}
             <Grid.Row>
                 <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
                   <ImageInput
