@@ -35,7 +35,7 @@ class App extends Component {
   };
 
   onExampleInput = () => {
-    this.setState({ input: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Roses_-_Vincent_van_Gogh.JPG/970px-Roses_-_Vincent_van_Gogh.JPG' }, this.onButtonSubmit);
+    this.setState({ input: process.env.PUBLIC_URL + '/example.jpeg' }, this.onButtonSubmit);
   }
 
   // This will put the colors predicted by the model into state so it could be used in components that visualize the results.
