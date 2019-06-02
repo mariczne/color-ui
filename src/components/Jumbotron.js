@@ -5,7 +5,11 @@ class Jumbotron extends Component {
   state = { visible: true }
 
   handleDismiss = () => {
-    this.setState({ visible: false })
+    this.setState({ visible: false });
+  }
+
+  onExampleInput = () => {
+    this.props.onExampleInput();
   }
 
   render() {
@@ -13,8 +17,8 @@ class Jumbotron extends Component {
       return (
         <Message color='teal' onDismiss={this.handleDismiss} style={{ margin: '0 auto' }}>
           <Header as='h1'>Hello!</Header>
-          <p>
-            This is color-ui, a simple web interface which analyzes the color composition of an image for you. To begin, simply paste the URL of the image in the box below and submit.
+          <p style={{ fontSize: "16px" }}>
+            This is color-ui, a simple web interface which analyzes the color composition of an image for you. To begin, either paste the URL of the image in the box below and click 'Send' or use <a onClick={this.onExampleInput} href="#">an example</a>.
           </p>
         </Message>
       )

@@ -30,9 +30,15 @@ class App extends Component {
     this.setState({ imageUrl: input, colors: [], loading: true });
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, input)
       .then(response => this.passColors(response),
-        err => console.error(err));
+        err => console.error('Clarifai API error'));
+        // Displaying error object inside console would compromise API key
   };
 
+  onExampleInput = () => {
+    this.setState({ input: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Roses_-_Vincent_van_Gogh.JPG/970px-Roses_-_Vincent_van_Gogh.JPG' }, this.onButtonSubmit);
+  }
+
+  // This will put the colors predicted by the model into state so it could be used in components that visualize the results.
   passColors = (response) => {
     const { colors } = response.outputs[0].data;
     colors.sort((a, b) => b.value - a.value);
@@ -47,11 +53,9 @@ class App extends Component {
           <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
             <AppNavbar />
             <Grid container style={{ marginTop: '3rem' }}>
-            {/* <Grid.Row>
-              <Grid.Column> */}
-                <Jumbotron />
-              {/* </Grid.Column>
-            </Grid.Row> */}
+                <Jumbotron 
+                  onExampleInput={this.onExampleInput}
+                />
             <Grid.Row>
                 <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
                   <ImageInput
