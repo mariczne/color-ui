@@ -24,8 +24,16 @@ class Results extends Component {
   }
 
   render() {
-    const { imageUrl, colorsArray, loading } = this.props;
+    const { imageUrl, colorsArray, loading, uploadedImage } = this.props;
 
+    // If using image uploaded by the user, display it straight from
+    // user's device. Downloading it from imgur again can cause
+    // performance issues if it's several megabytes.
+    let uploadedImageLocalUrl = null;
+    if (uploadedImage) {
+      uploadedImageLocalUrl = URL.createObjectURL(uploadedImage);
+    }
+    
     if (!imageUrl && colorsArray.length < 1) {
       return null;
     }
@@ -35,7 +43,7 @@ class Results extends Component {
         <Grid columns={2} stackable stretched>
           <Grid.Column width={10}>
             <Segment style={{ display: 'flex', alignItems: 'center', minHeight: '100px' }} loading={loading}>
-              <Image alt="" src={imageUrl} rounded fluid centered style={{ maxHeight: '450px', width: 'auto' }} />
+              <Image alt="" src={ uploadedImageLocalUrl || imageUrl } rounded fluid centered style={{ maxHeight: '450px', width: 'auto' }} />
             </Segment>
           </Grid.Column>
           <Grid.Column width={6} stretched>

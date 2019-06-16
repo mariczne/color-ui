@@ -45,6 +45,17 @@ class App extends Component {
     })
       .then(res => {
         this.setState({ urlInput: res.data.data.link, uploadingImage: false }, this.onImageSubmit);
+
+        // Delete uploaded image from the server after 3 minutes
+        const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+
+        sleep(240000).then(() => {
+          axios.delete('https://api.imgur.com/3/image/' + res.data.data.deletehash, {
+            headers: {
+              "Authorization": "Client-ID " + process.env.REACT_APP_IMGUR_CLIENT_ID
+            }
+          })
+        })
       })
   }
   
@@ -65,7 +76,7 @@ class App extends Component {
   };
 
   render() {
-    const { imageUrl, colors, loading, uploadingImage } = this.state;
+    const { imageUrl, colors, loading, uploadedImage, uploadingImage } = this.state;
     return (
       <Container fluid>
         <Grid className="App" style={{ paddingLeft: '0', paddingRight: '0' }}>
@@ -81,7 +92,7 @@ class App extends Component {
                     onUploadImageChange={this.onUploadImageChange}
                     uploadingImage={uploadingImage}
                   />
-                  <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} />
+                  <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} uploadedImage={uploadedImage}/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
