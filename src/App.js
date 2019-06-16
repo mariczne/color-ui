@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import Clarifai from 'clarifai';
+import axios from 'axios';
 import AppNavbar from './components/AppNavbar/AppNavbar';
 import ImageInput from './components/ImageInput/ImageInput';
 import Results from './components/Results/Results';
 import Jumbotron from './components/Jumbotron';
+import Footer from './components/Footer';
 
 const clarifaiApp = new Clarifai.App({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,29 +16,46 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      input: '',
+      urlInput: '',
+      uploadedImage: '',
+      uploadingImage: false,
       imageUrl: '',
       colors: [],
       loading: false,
     };
   }
 
-  onInputChange = (event) => {
-    this.setState({ input: event.target.value });
+  onUrlInputChange = (event) => {
+    this.setState({ urlInput: event.target.value });
   };
 
-  onButtonSubmit = () => {
-    const { input } = this.state;
-    this.setState({ imageUrl: input, colors: [], loading: true });
-    clarifaiApp.models.predict(Clarifai.COLOR_MODEL, input)
+  onUploadImageChange = (event) => {
+    this.setState({ uploadedImage: event.target.files[0], uploadingImage: true }, this.uploadImage);
+  };
+
+  uploadImage = () => {
+    const data = new FormData();
+
+    data.append('image', this.state.uploadedImage);
+
+    axios.post('https://api.imgur.com/3/image', data, {
+      headers: {
+        "Authorization": "Client-ID " + process.env.REACT_APP_IMGUR_CLIENT_ID
+      }
+    })
+      .then(res => {
+        this.setState({ urlInput: res.data.data.link, uploadingImage: false }, this.onImageSubmit);
+      })
+  }
+  
+  onImageSubmit = () => {
+    const { urlInput } = this.state;
+    this.setState({ imageUrl: urlInput, colors: [], loading: true });
+    clarifaiApp.models.predict(Clarifai.COLOR_MODEL, urlInput)
       .then(response => this.passColors(response),
         err => console.error('Clarifai API error'));
         // Displaying error object inside console would compromise API key
   };
-
-  onExampleInput = () => {
-    this.setState({ input: process.env.PUBLIC_URL + '/example.jpeg' }, this.onButtonSubmit);
-  }
 
   // This will put the colors predicted by the model into state so it could be used in components that visualize the results.
   passColors = (response) => {
@@ -46,21 +65,21 @@ class App extends Component {
   };
 
   render() {
-    const { imageUrl, colors, loading } = this.state;
+    const { imageUrl, colors, loading, uploadingImage } = this.state;
     return (
       <Container fluid>
         <Grid className="App" style={{ paddingLeft: '0', paddingRight: '0' }}>
           <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
             <AppNavbar />
             <Grid container style={{ marginTop: '3rem' }}>
-                <Jumbotron 
-                  onExampleInput={this.onExampleInput}
-                />
+                <Jumbotron />
             <Grid.Row>
                 <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
                   <ImageInput
-                    onInputChange={this.onInputChange}
-                    onButtonSubmit={this.onButtonSubmit}
+                    onUrlInputChange={this.onUrlInputChange}
+                    onImageSubmit={this.onImageSubmit}
+                    onUploadImageChange={this.onUploadImageChange}
+                    uploadingImage={uploadingImage}
                   />
                   <Results imageUrl={imageUrl} colorsArray={colors} loading={loading} />
                 </Grid.Column>
@@ -68,6 +87,7 @@ class App extends Component {
             </Grid>
           </Grid.Column>
         </Grid>
+        <Footer />
       </Container>
     );
   }

@@ -34,16 +34,16 @@ class Results extends Component {
       <Segment style={{ marginBottom: '1rem' }}>
         <Grid columns={2} stackable stretched>
           <Grid.Column width={10}>
-            <Segment style={{ display: 'flex', alignItems: 'center' }} loading={loading}>
+            <Segment style={{ display: 'flex', alignItems: 'center', minHeight: '100px' }} loading={loading}>
               <Image alt="" src={imageUrl} rounded fluid centered style={{ maxHeight: '450px', width: 'auto' }} />
             </Segment>
           </Grid.Column>
           <Grid.Column width={6} stretched>
             <Segment style={{ height: '50%' }} loading={loading}>
-              <ColorsList data={colorsArray} />
+              <ColorsChart data={this.prepareData(colorsArray)} />
             </Segment>
             <Segment style={{ height: '50%' }} loading={loading}>
-              <ColorsChart data={this.prepareData(colorsArray)} />
+              <ColorsList data={colorsArray} />
             </Segment>
           </Grid.Column>
         </Grid>

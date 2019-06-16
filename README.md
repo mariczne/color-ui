@@ -11,4 +11,4 @@ Right now it's available at <https://color-ui.herokuapp.com/>. Because of Heroku
 4. Run the app via `npm start`
 
 ### To do
-Users should have the possibility to upload images straight from their device. Since I want color-ui to remain front-end only, this will most likely have to be done with an external image sharing website.
+Refactoring, probably

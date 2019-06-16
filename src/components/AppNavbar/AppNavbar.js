@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Menu, Image, Container, Icon,
-} from 'semantic-ui-react';
+import { Menu, Image, Container, Icon } from 'semantic-ui-react';
 import logo from './logo.png';
 
 const AppNavbar = () => (

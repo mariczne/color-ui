@@ -18,7 +18,7 @@ class Jumbotron extends Component {
         <Message color='teal' onDismiss={this.handleDismiss} style={{ margin: '0 auto' }}>
           <Header as='h1'>Hello!</Header>
           <p style={{ fontSize: "16px" }}>
-            This is color-ui, a simple web interface which analyzes the color composition of an image for you. To begin, either paste the URL of the image in the box below and click 'Send' or use <a onClick={this.onExampleInput} href="#">an example</a>.
+            This is color-ui, a simple web interface which analyzes the color composition of an image for you. To begin, either paste the URL of the image in the box below and click 'Send' or upload one from your device.
           </p>
         </Message>
       )
