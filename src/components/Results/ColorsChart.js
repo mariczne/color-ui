@@ -32,7 +32,19 @@ const ColorsChart = (props) => {
               borderColor: '#dedede',
               borderWidth: 1
             }
-          }
+          },
+          tooltips: {
+            callbacks: {
+              label: function(tooltipItem, data) {
+                const dataset = data.datasets[tooltipItem.datasetIndex];
+                const value = dataset.data[tooltipItem.index];
+                return ' ' + value + '%';
+              },
+              title: function(tooltipItem, data) {
+                return data.labels[tooltipItem[0].index];
+              }
+            }
+          },
         }}
       />
     </div>
