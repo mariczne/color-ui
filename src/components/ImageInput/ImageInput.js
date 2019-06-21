@@ -16,7 +16,7 @@ const ImageInput = (props) => {
       />
 
       <Divider horizontal>Or</Divider>
-      
+
       <ImageUpload onUploadImageChange={onUploadImageChange} />
     </Segment>
   );

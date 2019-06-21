@@ -11,4 +11,6 @@ Right now it's available at <https://color-ui.herokuapp.com/>. Because of Heroku
 4. Run the app via `npm start`
 
 ### To do
-Refactoring, probably
+More refactoring
+Error handling
+Tests

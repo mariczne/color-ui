@@ -30,20 +30,20 @@ const ColorsChart = (props) => {
           elements: {
             arc: {
               borderColor: '#dedede',
-              borderWidth: 1
-            }
+              borderWidth: 1,
+            },
           },
           tooltips: {
             callbacks: {
-              label: function(tooltipItem, data) {
+              label(tooltipItem, data) {
                 const dataset = data.datasets[tooltipItem.datasetIndex];
                 const value = dataset.data[tooltipItem.index];
-                return ' ' + value + '%';
+                return ` ${value}%`;
               },
-              title: function(tooltipItem, data) {
+              title(tooltipItem, data) {
                 return data.labels[tooltipItem[0].index];
-              }
-            }
+              },
+            },
           },
         }}
       />
