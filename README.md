@@ -11,6 +11,7 @@ Right now it's available at <https://color-ui.herokuapp.com/>. Because of Heroku
 4. Run the app via `npm start`
 
 ### To do
-More refactoring
-Error handling
-Tests
+* More refactoring
+* (Proper) Error handling
+* Tests
+* Perhaps dropping Semantic UI or at least its React implementation

@@ -1,8 +1,10 @@
 import React from 'react';
-import { Menu, Image, Container, Icon } from 'semantic-ui-react';
+import {
+  Menu, Image, Container, Icon,
+} from 'semantic-ui-react';
 import logo from './logo.png';
 
-const AppNavbar = () => (
+const Navbar = () => (
   <Menu borderless fixed="top">
     <Container>
       <Menu.Item
@@ -30,4 +32,4 @@ const AppNavbar = () => (
   </Menu>
 );
 
-export default AppNavbar;
+export default Navbar;

@@ -1,25 +1,24 @@
 import React from 'react';
-import { Segment, Input, Divider } from 'semantic-ui-react';
+import { Segment, Divider } from 'semantic-ui-react';
 import ImageUpload from './ImageUpload';
+import ImageURL from './ImageURL';
 
 const ImageInput = (props) => {
-  const { onUrlInputChange, onImageSubmit, onUploadImageChange, uploadingImage } = props;
+  const { onUrlInputSubmit, onUploadImage, isUploadingImage } = props;
+
   return (
-    <Segment loading={uploadingImage}>
-      <Input
-        action={{
-          color: 'teal', labelPosition: 'left', icon: 'file image', content: 'Submit', onClick: onImageSubmit,
-        }}
-        placeholder="Image URL"
-        fluid
-        onChange={onUrlInputChange}
-      />
+    <Segment>
+      <ImageURL onUrlInputSubmit={onUrlInputSubmit} />
 
       <Divider horizontal>Or</Divider>
 
-      <ImageUpload onUploadImageChange={onUploadImageChange} />
+      <ImageUpload
+        onUploadImage={onUploadImage}
+        isUploadingImage={isUploadingImage}
+      />
     </Segment>
   );
 };
+
 
 export default ImageInput;

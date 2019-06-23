@@ -1,5 +1,7 @@
 import React from 'react';
-import { Segment, Grid, Image } from 'semantic-ui-react';
+import {
+  Segment, Grid, Image, Message,
+} from 'semantic-ui-react';
 import ColorsChart from './ColorsChart';
 import ColorsList from './ColorsList';
 
@@ -23,18 +25,23 @@ const prepareData = (data) => {
 };
 
 const Results = (props) => {
-  const { imageUrl, colorsArray, loadingResults, uploadedImage } = props;
+  const {
+    imageUrl, colors, isLoadingResults, uploadedImageLocalUrl, errors,
+  } = props;
 
-  // If using image uploaded by the user, display it straight from
-  // user's device. Downloading it from imgur again can cause
-  // performance issues if it's several megabytes.
-  let uploadedImageLocalUrl = null;
-  if (uploadedImage) {
-    uploadedImageLocalUrl = URL.createObjectURL(uploadedImage);
+  if (!imageUrl && colors.length < 1) {
+    return null;
   }
 
-  if (!imageUrl && colorsArray.length < 1) {
-    return null;
+  if (errors.length > 0) {
+    return (
+      <Segment style={{ marginBottom: '1rem' }}>
+        <Message negative>
+          <Message.Header>{errors}</Message.Header>
+          <p>Please try again</p>
+        </Message>
+      </Segment>
+    );
   }
 
   return (
@@ -46,11 +53,11 @@ const Results = (props) => {
           </Segment>
         </Grid.Column>
         <Grid.Column width={6} stretched>
-          <Segment style={{ height: '50%' }} loading={loadingResults}>
-            <ColorsChart data={prepareData(colorsArray)} />
+          <Segment style={{ height: '50%' }} loading={isLoadingResults}>
+            <ColorsChart colors={prepareData(colors)} />
           </Segment>
-          <Segment style={{ height: '50%' }} loading={loadingResults}>
-            <ColorsList data={colorsArray} />
+          <Segment style={{ height: '50%' }} loading={isLoadingResults}>
+            <ColorsList colors={colors} />
           </Segment>
         </Grid.Column>
       </Grid>

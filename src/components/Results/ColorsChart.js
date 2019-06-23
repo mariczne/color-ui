@@ -2,7 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
 const ColorsChart = (props) => {
-  const { data } = props;
+  const { colors } = props;
   return (
     <div
       className="chart"
@@ -14,7 +14,7 @@ const ColorsChart = (props) => {
       }}
     >
       <Pie
-        data={data}
+        data={colors}
         options={{
           legend: {
             display: false,
