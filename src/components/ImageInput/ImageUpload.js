@@ -7,8 +7,8 @@ import axios from 'axios';
 class ImageUpload extends React.Component {
   state = {
     image: null,
-    imageFileName: null,
-    uploadedImageLocalUrl: null,
+    imageFileName: '',
+    uploadedImageLocalUrl: '',
   }
 
   onUploadImageChange = (event) => {
@@ -50,7 +50,7 @@ class ImageUpload extends React.Component {
         <Item.Group>
           <Item style={{ margin: '0  ' }}>
             <Item.Content>
-              <Item.Header>{imageFileName}</Item.Header>
+              <Item.Header style={{ wordBreak: 'break-all' }}>{imageFileName}</Item.Header>
               <Item.Extra><Button type="submit" content="Upload" icon="upload" labelPosition="left" color="teal" /></Item.Extra>
             </Item.Content>
           </Item>

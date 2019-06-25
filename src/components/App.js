@@ -13,19 +13,20 @@ const clarifaiApp = new Clarifai.App({
 
 class App extends React.Component {
   state = {
-    imageUrl: '',
-    imageBase64: null,
-    uploadedImageLocalUrl: '',
-    isUploadingImage: false,
-    isLoadingResults: false,
-    colors: [],
-    errors: {},
+    imageUrl: '', // for storing URL when user submits an external URL
+    imageBase64: '', // base64 string of locally uploaded image
+    uploadedImageLocalUrl: '', // objectURL of locally uploaded image; for displaying it
+    isUploadingImage: false, // state of uploading local image
+    isLoadingResults: false, // state of receiving results; for loading spinners
+    colors: [], // results received from the API - main colors
+    errors: {}, // contains errors
   };
 
+  // When the user submits the image external URL
   onUrlInputSubmit = (url) => {
     this.setState({
       imageUrl: url,
-      imageBase64: null,
+      imageBase64: '',
       uploadedImageLocalUrl: '',
       colors: [],
       isLoadingResults: true,
@@ -33,6 +34,7 @@ class App extends React.Component {
     }, this.onImageSubmit);
   }
 
+  // When the user uploads image from their own device
   onUploadImage = (base64, localUrl) => {
     this.setState({
       imageUrl: '',
@@ -44,6 +46,7 @@ class App extends React.Component {
       errors: {},
     }, this.onImageSubmit);
   }
+
 
   onImageSubmit = () => {
     const { imageBase64, imageUrl } = this.state;
