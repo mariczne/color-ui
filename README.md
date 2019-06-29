@@ -2,7 +2,7 @@
 color-ui is a simple web interface written in React for [Clarifai's](https://clarifai.com/) ['Color' model](https://clarifai.com/models/color-image-recognition-model-eeed0b6733a644cea07cf4c60f87ebb7) which analyzes the provided image and returns its main, dominant colors along with their hex values and closest W3C color names.
 
 ### Testing the app
-Right now it's available at <https://color-ui.herokuapp.com/>. Because of Heroku hosting it may take a few seconds to wake up at first.
+Right now it's available at <https://mariczne.github.io/color-ui/>. 
 
 ### Testing the app locally
 1. Clone the repository
