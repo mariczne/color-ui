@@ -29,6 +29,7 @@ class ImageURL extends React.Component {
           fluid
           onChange={this.onUrlInputChange}
           value={urlInput}
+          type="url"
         />
       </Form>
     );

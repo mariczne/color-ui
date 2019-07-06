@@ -19,7 +19,7 @@ class App extends React.Component {
     isUploadingImage: false, // state of uploading local image
     isLoadingResults: false, // state of receiving results; for loading spinners
     colors: [], // results received from the API - main colors
-    errors: {}, // contains errors
+    errors: [], // contains errors
   };
 
   // When the user submits the image external URL
@@ -30,7 +30,7 @@ class App extends React.Component {
       uploadedImageLocalUrl: '',
       colors: [],
       isLoadingResults: true,
-      errors: {},
+      errors: [],
     }, this.onImageSubmit);
   }
 
@@ -43,7 +43,7 @@ class App extends React.Component {
       colors: [],
       isLoadingResults: true,
       isUploadingImage: true,
-      errors: {},
+      errors: [],
     }, this.onImageSubmit);
   }
 
@@ -58,8 +58,14 @@ class App extends React.Component {
     }
 
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, config)
-      .then(response => this.handleResponse(response), () => {
-        this.setState({ errors: 'Error connecting to the API  ' });
+      .then(response => this.handleResponse(response), (response) => {
+        if (response.status.code !== 10000) {
+          this.setState({ 
+            errors: response.data.outputs[0].status.description || response.statusText,
+            isLoadingResults: false,
+            isUploadingImage: false 
+          })
+        }
       });
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Segment, Grid, Image, Message,
+  Segment, Grid, Image, Message, Icon
 } from 'semantic-ui-react';
 import ColorsChart from './ColorsChart';
 import ColorsList from './ColorsList';
@@ -29,16 +29,19 @@ const Results = (props) => {
     imageUrl, colors, isLoadingResults, uploadedImageLocalUrl, errors,
   } = props;
 
-  if (!imageUrl && colors.length < 1) {
+  if (!imageUrl && colors.length < 1 && errors.length < 1 ) {
     return null;
   }
 
   if (errors.length > 0) {
     return (
       <Segment style={{ marginBottom: '1rem' }}>
-        <Message negative>
-          <Message.Header>{errors}</Message.Header>
-          <p>Please try again</p>
+        <Message negative icon>
+          <Icon name='x' />
+          <Message.Content>
+            <Message.Header>{errors}</Message.Header>
+            Please try again
+          </Message.Content>
         </Message>
       </Segment>
     );
