@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/color-ui/precache-manifest.c676bf3bbae3af9a297a6d604914c85f.js"
+  "https://mariczne.github.io/color-ui/precache-manifest.58a440a263f43067a52963d51d70db1d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/color-ui/index.html", {
+workbox.routing.registerNavigationRoute("https://mariczne.github.io/color-ui/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
