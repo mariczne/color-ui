@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import Clarifai from 'clarifai';
 import Navbar from './Navbar/Navbar';
-import Jumbotron from './Jumbotron';
+import Jumbotron from './Jumbotron/Jumbotron';
 import ImageInput from './ImageInput/ImageInput';
 import Results from './Results/Results';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 
 const clarifaiApp = new Clarifai.App({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,9 +13,7 @@ const clarifaiApp = new Clarifai.App({
 
 class App extends React.Component {
   state = {
-    imageUrl: '', // for storing URL when user submits an external URL
-    imageBase64: '', // base64 string of locally uploaded image
-    uploadedImageLocalUrl: '', // objectURL of locally uploaded image; for displaying it
+    imageUrl: '', // for storing URL
     isUploadingImage: false, // state of uploading local image
     isLoadingResults: false, // state of receiving results; for loading spinners
     colors: [], // results received from the API - main colors
@@ -26,45 +24,43 @@ class App extends React.Component {
   onUrlInputSubmit = (url) => {
     this.setState({
       imageUrl: url,
-      imageBase64: '',
-      uploadedImageLocalUrl: '',
       colors: [],
       isLoadingResults: true,
       errors: [],
-    }, this.onImageSubmit);
+    }, () => {
+      this.onImageSubmit(url);
+    });
   }
 
   // When the user uploads image from their own device
   onUploadImage = (base64, localUrl) => {
     this.setState({
-      imageUrl: '',
-      imageBase64: base64,
-      uploadedImageLocalUrl: localUrl,
+      imageUrl: localUrl,
       colors: [],
       isLoadingResults: true,
       isUploadingImage: true,
       errors: [],
-    }, this.onImageSubmit);
+    }, () => {
+      this.onImageSubmit(null, base64);
+    });
   }
 
-
-  onImageSubmit = () => {
-    const { imageBase64, imageUrl } = this.state;
+  onImageSubmit = (url, base64) => {
     const config = {};
-    if (imageUrl) {
-      config.url = imageUrl;
-    } else if (imageBase64) {
-      config.base64 = imageBase64;
+    if (url) {
+      config.url = url;
+    } else if (base64) {
+      config.base64 = base64;
     }
 
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, config)
       .then(response => this.handleResponse(response), (response) => {
         if (response.status.code !== 10000) {
-          this.setState({ 
+          this.setState({
             errors: response.data.outputs[0].status.description || response.statusText,
             isLoadingResults: false,
-            isUploadingImage: false 
-          })
+            isUploadingImage: false,
+          });
         }
       });
   };
@@ -79,7 +75,7 @@ class App extends React.Component {
 
   render() {
     const {
-      imageUrl, colors, isLoadingResults, uploadedImageLocalUrl, isUploadingImage, errors,
+      imageUrl, colors, isLoadingResults, isUploadingImage, errors,
     } = this.state;
 
     return (
@@ -100,7 +96,6 @@ class App extends React.Component {
                     imageUrl={imageUrl}
                     colors={colors}
                     isLoadingResults={isLoadingResults}
-                    uploadedImageLocalUrl={uploadedImageLocalUrl}
                     errors={errors}
                   />
                 </Grid.Column>
