@@ -1,8 +1,28 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
+const prepareDataForChart = (data) => {
+  const preparedData = {
+    labels: [],
+    datasets: [{ data }],
+  };
+
+  preparedData.labels = data.map(color => `${color.w3c.name.replace(/([A-Z])/g, ' $1').trim()} (${color.raw_hex.toUpperCase()})`);
+
+  preparedData.datasets[0].data = data.map(color => Math.round(color.value * 100));
+
+  preparedData.datasets[0].backgroundColor = data.map(color => color.raw_hex);
+
+  preparedData.datasets[0].hoverBackgroundColor = [...preparedData.datasets[0].backgroundColor];
+
+  preparedData.datasets[0].label = 'Color';
+
+  return preparedData;
+};
+
 const ColorsChart = (props) => {
   const { colors } = props;
+
   return (
     <div
       className="chart"
@@ -14,7 +34,7 @@ const ColorsChart = (props) => {
       }}
     >
       <Pie
-        data={colors}
+        data={prepareDataForChart(colors)}
         options={{
           legend: {
             display: false,
