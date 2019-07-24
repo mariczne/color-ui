@@ -33,8 +33,7 @@ class ImageUpload extends React.Component {
       const reader = new FileReader();
       reader.readAsDataURL(response.data);
       reader.onloadend = () => {
-        const base64data = reader.result;
-        // @ts-ignore
+        const base64data = reader.result.toString();
         onUploadImage(base64data.substr(base64data.indexOf(',') + 1), uploadedImageLocalUrl);
       };
     });
@@ -47,7 +46,7 @@ class ImageUpload extends React.Component {
     return (
       <Segment compact style={{ margin: '14px auto 0px' }} loading={isUploadingImage}>
         <Item.Group>
-          <Item style={{ margin: '0  ' }}>
+          <Item style={{ margin: '0px' }}>
             <Item.Content>
               <Item.Header style={{ wordBreak: 'break-all' }}>{image.name}</Item.Header>
               <Item.Extra><Button type="submit" content="Upload" icon="upload" labelPosition="left" color="teal" /></Item.Extra>

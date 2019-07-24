@@ -13,11 +13,11 @@ const clarifaiApp = new Clarifai.App({
 
 class App extends React.Component {
   state = {
-    imageUrl: '', // for storing URL
-    isUploadingImage: false, // state of uploading local image
-    isLoadingResults: false, // state of receiving results; for loading spinners
+    imageUrl: '',
+    isUploadingImage: false,
+    isLoadingResults: false, // state of receiving results from the API; for loading spinners
     colors: [], // results received from the API - main colors
-    errors: [], // contains errors
+    errors: [],
   };
 
   // When the user submits the image external URL
@@ -45,6 +45,7 @@ class App extends React.Component {
     });
   }
 
+  // Send external URL or base64 string to API
   onImageSubmit = (url, base64) => {
     const config = {};
     if (url) {
@@ -56,17 +57,16 @@ class App extends React.Component {
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, config)
       .then(response => this.handleResponse(response), (response) => {
         if (response.status.code !== 10000) {
-          this.setState({
-            errors: response.data.outputs[0].status.description || response.statusText,
+          const errorDescription = response.data.outputs[0].status.description;
+          this.setState(prevState => ({
+            errors: [...prevState.errors, errorDescription || response.statusText],
             isLoadingResults: false,
             isUploadingImage: false,
-          });
+          }));
         }
       });
   };
 
-  // This will put the colors predicted by the model into state so it could
-  // be used in components that visualize the results.
   handleResponse = (response) => {
     const { colors } = response.outputs[0].data;
     colors.sort((a, b) => b.value - a.value);
@@ -79,32 +79,30 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <Container fluid>
-        <Grid className="App" style={{ paddingLeft: '0', paddingRight: '0' }}>
-          <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
-            <Navbar />
-            <Grid container style={{ marginTop: '3rem' }}>
-              <Jumbotron />
-              <Grid.Row>
-                <Grid.Column style={{ paddingLeft: '0', paddingRight: '0' }}>
-                  <ImageInput
-                    onUrlInputSubmit={this.onUrlInputSubmit}
-                    onUploadImage={this.onUploadImage}
-                    isUploadingImage={isUploadingImage}
-                  />
-                  <Results
-                    imageUrl={imageUrl}
-                    colors={colors}
-                    isLoadingResults={isLoadingResults}
-                    errors={errors}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-        </Grid>
-        <Footer />
-      </Container>
+      <>
+        <Navbar />
+        <Container fluid>
+          <Grid container>
+            <Grid.Row>
+              <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
+                <Jumbotron />
+                <ImageInput
+                  onUrlInputSubmit={this.onUrlInputSubmit}
+                  onUploadImage={this.onUploadImage}
+                  isUploadingImage={isUploadingImage}
+                />
+                <Results
+                  imageUrl={imageUrl}
+                  colors={colors}
+                  isLoadingResults={isLoadingResults}
+                  errors={errors}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <Footer />
+        </Container>
+      </>
     );
   }
 }

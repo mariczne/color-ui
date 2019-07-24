@@ -5,7 +5,7 @@ import {
 import logo from './logo.png';
 
 const Navbar = () => (
-  <Menu borderless fixed="top">
+  <Menu borderless>
     <Container>
       <Menu.Item
         as="a"
@@ -16,7 +16,7 @@ const Navbar = () => (
           size="mini"
           style={{ marginRight: '1em' }}
         />
-              color-ui
+        color-ui
       </Menu.Item>
       <Menu.Item
         position="right"
