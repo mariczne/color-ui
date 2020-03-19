@@ -3,15 +3,12 @@ import { Segment, Divider } from "semantic-ui-react";
 import ImageUpload from "./ImageUpload";
 import ImageURL from "./ImageURL";
 
-const ImageInput = ({ onUrlInputSubmit, onUploadImage, isUploadingImage }) => {
+const ImageInput = ({ onUploadImage }) => {
   return (
     <Segment>
-      <ImageURL onUrlInputSubmit={onUrlInputSubmit} />
+      <ImageURL onUploadImage={onUploadImage} />
       <Divider horizontal>Or</Divider>
-      <ImageUpload
-        onUploadImage={onUploadImage}
-        isUploadingImage={isUploadingImage}
-      />
+      <ImageUpload onUploadImage={onUploadImage} />
     </Segment>
   );
 };

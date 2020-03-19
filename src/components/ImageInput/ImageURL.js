@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Form } from "semantic-ui-react";
 
-const ImageURL = ({ onUrlInputSubmit }) => {
+const ImageURL = ({ onUploadImage }) => {
   const [urlInput, setUrlInput] = useState("");
 
   const onUrlInputChange = event => {
@@ -9,7 +9,7 @@ const ImageURL = ({ onUrlInputSubmit }) => {
   };
 
   return (
-    <Form onSubmit={() => onUrlInputSubmit(urlInput)}>
+    <Form onSubmit={() => onUploadImage({ imageUrl: urlInput })}>
       <Input
         action={{
           color: "teal",

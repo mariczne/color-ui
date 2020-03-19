@@ -1,33 +1,6 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-
-const prepareDataForChart = data => {
-  const preparedData = {
-    labels: [],
-    datasets: [{ data }]
-  };
-
-  preparedData.labels = data.map(
-    color =>
-      `${color.w3c.name
-        .replace(/([A-Z])/g, " $1")
-        .trim()} (${color.raw_hex.toUpperCase()})`
-  );
-
-  preparedData.datasets[0].data = data.map(color =>
-    Math.round(color.value * 100)
-  );
-
-  preparedData.datasets[0].backgroundColor = data.map(color => color.raw_hex);
-
-  preparedData.datasets[0].hoverBackgroundColor = [
-    ...preparedData.datasets[0].backgroundColor
-  ];
-
-  preparedData.datasets[0].label = "Color";
-
-  return preparedData;
-};
+import { prepareColorsForChart } from "./util/chart.js";
 
 const ColorsChart = ({ colors }) => {
   return (
@@ -41,7 +14,7 @@ const ColorsChart = ({ colors }) => {
       }}
     >
       <Pie
-        data={prepareDataForChart(colors)}
+        data={prepareColorsForChart(colors)}
         options={{
           legend: {
             display: false,
@@ -64,8 +37,8 @@ const ColorsChart = ({ colors }) => {
             callbacks: {
               label(tooltipItem, data) {
                 const dataset = data.datasets[tooltipItem.datasetIndex];
-                const value = dataset.data[tooltipItem.index];
-                return ` ${value}%`;
+                const label = dataset.data[tooltipItem.index];
+                return ` ${label}%`;
               },
               title(tooltipItem, data) {
                 return data.labels[tooltipItem[0].index];

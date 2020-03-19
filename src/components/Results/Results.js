@@ -2,7 +2,7 @@ import React from "react";
 import { Segment, Grid, Image } from "semantic-ui-react";
 import ColorsChart from "./ColorsChart";
 import ColorsList from "./ColorsList";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessages from "../ErrorMessages/ErrorMessages";
 
 const Results = ({ imageUrl, colors, isLoadingResults, errors }) => {
   if (!imageUrl && colors.length < 1 && errors.length < 1) {
@@ -10,8 +10,10 @@ const Results = ({ imageUrl, colors, isLoadingResults, errors }) => {
   }
 
   if (errors.length > 0) {
-    return errors.map(error => <ErrorMessage key={error} error={error} />);
+    return <ErrorMessages errors={errors} />
   }
+
+  const sortedColors = colors.sort((a, b) => b.value - a.value);
 
   return (
     <Segment>
@@ -36,13 +38,13 @@ const Results = ({ imageUrl, colors, isLoadingResults, errors }) => {
         </Grid.Column>
         <Grid.Column width={6} stretched>
           <Segment style={{ height: "50%" }} loading={isLoadingResults}>
-            <ColorsChart colors={colors} />
+            <ColorsChart colors={sortedColors} />
           </Segment>
           <Segment
             style={{ height: "50%", textAlign: "center" }}
             loading={isLoadingResults}
           >
-            <ColorsList colors={colors} />
+            <ColorsList colors={sortedColors} />
             <small>
               <i>tip: click on color to copy it to clipboard!</i>
             </small>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Grid, Form, Segment, Item } from "semantic-ui-react";
-import axios from "axios";
+import { convertImageToBase64 } from "../../util/image";
 
-const ImageUpload = ({ isUploadingImage, onUploadImage }) => {
+const ImageUpload = ({ onUploadImage }) => {
   const [image, setImage] = useState(null);
 
   const onUploadImageChange = event => {
@@ -11,33 +11,20 @@ const ImageUpload = ({ isUploadingImage, onUploadImage }) => {
     }
   };
 
-  const onUploadImageSubmit = event => {
+  const onUploadImageSubmit = async event => {
     event.preventDefault();
 
-    const uploadedImageLocalUrl = URL.createObjectURL(image);
+    const imageUrl = URL.createObjectURL(image);
+    const base64 = await convertImageToBase64(image);
 
-    // convert image referred to by ObjectURL to base64 string and pass it to App component
-    axios({
-      method: "get",
-      url: uploadedImageLocalUrl,
-      responseType: "blob"
-    }).then(response => {
-      const reader = new FileReader();
-      reader.readAsDataURL(response.data);
-      reader.onloadend = () => {
-        const base64data = reader.result.toString();
-        onUploadImage(
-          base64data.substr(base64data.indexOf(",") + 1),
-          uploadedImageLocalUrl
-        );
-      };
-    });
+    onUploadImage({ base64, imageUrl });
   };
 
   return (
     <Grid>
       <Grid.Column textAlign="center">
         <Form onSubmit={onUploadImageSubmit}>
+          {image ? <FileInfo imageName={image.name} /> : null}
           <Button
             content="Select image to upload"
             icon="disk"
@@ -52,12 +39,6 @@ const ImageUpload = ({ isUploadingImage, onUploadImage }) => {
             onChange={onUploadImageChange}
             accept="image/*"
           />
-          {image ? (
-            <FileInfo
-              imageName={image.name}
-              isUploadingImage={isUploadingImage}
-            />
-          ) : null}
         </Form>
       </Grid.Column>
     </Grid>
@@ -66,13 +47,9 @@ const ImageUpload = ({ isUploadingImage, onUploadImage }) => {
 
 export default ImageUpload;
 
-const FileInfo = ({ imageName, isUploadingImage }) => {
+const FileInfo = ({ imageName }) => {
   return (
-    <Segment
-      compact
-      style={{ margin: "14px auto 0px" }}
-      loading={isUploadingImage}
-    >
+    <Segment compact style={{ margin: "0px auto 14px" }}>
       <Item.Group>
         <Item style={{ margin: "0px" }}>
           <Item.Content>

@@ -9,9 +9,3 @@ Right now it's available at <https://mariczne.github.io/color-ui/>.
 2. Install dependencies via `npm install`
 3. In the main directory create a file `.env.local`, inside the file add line `REACT_APP_API_KEY='YOUR_API_KEY'`, substituting `YOUR_API_KEY` placeholder for your own API key provided by Clarifai
 4. Run the app via `npm start`
-
-### To do
-* More refactoring
-* (Proper) Error handling
-* Tests
-* Perhaps dropping Semantic UI or at least its React implementation
