@@ -22,6 +22,7 @@ const ImageURL = ({ onUploadImage }) => {
         onChange={onUrlInputChange}
         value={urlInput}
         type="url"
+        required
       />
     </Form>
   );

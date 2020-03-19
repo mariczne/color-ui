@@ -5,6 +5,7 @@ import Jumbotron from "./Jumbotron/Jumbotron";
 import ImageInput from "./ImageInput/ImageInput";
 import Results from "./Results/Results";
 import Footer from "./Footer/Footer";
+import ErrorMessages from "./ErrorMessages/ErrorMessages";
 
 import { fetchColors } from "../util/clarifai.js";
 
@@ -33,7 +34,6 @@ const App = () => {
       colors = await fetchColors(config);
       setColors(colors);
     } catch (error) {
-      console.log(error);
       handleError(error);
     }
     setIsLoadingResults(false);
@@ -43,6 +43,8 @@ const App = () => {
     setErrors([...errors, error]);
   };
 
+  const isAnyErrorPresent = errors.length > 0;
+
   return (
     <>
       <Navbar />
@@ -51,12 +53,13 @@ const App = () => {
           <Grid.Row>
             <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
               <Jumbotron />
+              {isAnyErrorPresent && <ErrorMessages errors={errors} />}
               <ImageInput onUploadImage={onUploadImage} />
               <Results
                 imageUrl={imageUrl}
                 colors={colors}
                 isLoadingResults={isLoadingResults}
-                errors={errors}
+                isAnyErrorPresent={isAnyErrorPresent}
               />
             </Grid.Column>
           </Grid.Row>

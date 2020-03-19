@@ -2,15 +2,14 @@ import React from "react";
 import { Segment, Grid, Image } from "semantic-ui-react";
 import ColorsChart from "./ColorsChart";
 import ColorsList from "./ColorsList";
-import ErrorMessages from "../ErrorMessages/ErrorMessages";
 
-const Results = ({ imageUrl, colors, isLoadingResults, errors }) => {
-  if (!imageUrl && colors.length < 1 && errors.length < 1) {
+const Results = ({ imageUrl, colors, isLoadingResults, isAnyErrorPresent }) => {
+  if (!imageUrl && colors.length < 1 && !isAnyErrorPresent) {
     return null;
   }
 
-  if (errors.length > 0) {
-    return <ErrorMessages errors={errors} />
+  if (isAnyErrorPresent) {
+    return null;
   }
 
   const sortedColors = colors.sort((a, b) => b.value - a.value);
