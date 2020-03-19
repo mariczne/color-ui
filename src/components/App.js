@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Grid } from "semantic-ui-react";
 import Clarifai from "clarifai";
 import Navbar from "./Navbar/Navbar";
@@ -11,48 +11,34 @@ const clarifaiApp = new Clarifai.App({
   apiKey: process.env.REACT_APP_API_KEY
 });
 
-class App extends React.Component {
-  state = {
-    imageUrl: "",
-    isUploadingImage: false,
-    isLoadingResults: false, // state of receiving results from the API; for loading spinners
-    colors: [], // results received from the API - main colors
-    errors: []
-  };
+const App = () => {
+  const [imageUrl, setImageUrl] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [isLoadingResults, setIsLoadingResults] = useState(false);
+  const [colors, setColors] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   // When the user submits the image external URL
-  onUrlInputSubmit = url => {
-    this.setState(
-      {
-        imageUrl: url,
-        colors: [],
-        isLoadingResults: true,
-        errors: []
-      },
-      () => {
-        this.onImageSubmit(url);
-      }
-    );
+  const onUrlInputSubmit = url => {
+    setImageUrl(url);
+    setIsLoadingResults(true);
+    setColors([]);
+    setErrors([]);
+    onImageSubmit(url);
   };
 
   // When the user uploads image from their own device
-  onUploadImage = (base64, localUrl) => {
-    this.setState(
-      {
-        imageUrl: localUrl,
-        colors: [],
-        isLoadingResults: true,
-        isUploadingImage: true,
-        errors: []
-      },
-      () => {
-        this.onImageSubmit(null, base64);
-      }
-    );
+  const onUploadImage = (base64, localUrl) => {
+    setImageUrl(localUrl);
+    setColors([]);
+    setIsLoadingResults([true]);
+    setIsUploadingImage([true]);
+    setErrors([]);
+    onImageSubmit(null, base64);
   };
 
   // Send external URL or base64 string to API
-  onImageSubmit = (url, base64) => {
+  const onImageSubmit = (url, base64) => {
     const config = {};
     if (url) {
       config.url = url;
@@ -61,65 +47,52 @@ class App extends React.Component {
     }
 
     clarifaiApp.models.predict(Clarifai.COLOR_MODEL, config).then(
-      response => this.handleResponse(response),
-      response => {
-        if (response.status.code !== 10000) {
-          const errorDescription = response.data.outputs[0].status.description;
-          this.setState(prevState => ({
-            errors: [
-              ...prevState.errors,
-              errorDescription || response.statusText
-            ],
-            isLoadingResults: false,
-            isUploadingImage: false
-          }));
+      response => handleResponse(response),
+      error => {
+        if (error.status.code !== 10000) {
+          const errorDescription = error.data.outputs[0].status.description;
+          setErrors([...errors, errorDescription || error.statusText]);
+          setIsLoadingResults(false);
+          setIsUploadingImage(false);
         }
       }
     );
   };
 
-  handleResponse = response => {
+  const handleResponse = response => {
     const { colors } = response.outputs[0].data;
     colors.sort((a, b) => b.value - a.value);
-    this.setState({ colors, isLoadingResults: false, isUploadingImage: false });
+    setColors(colors);
+    setIsLoadingResults(false);
+    setIsUploadingImage(false);
   };
 
-  render() {
-    const {
-      imageUrl,
-      colors,
-      isLoadingResults,
-      isUploadingImage,
-      errors
-    } = this.state;
-
-    return (
-      <>
-        <Navbar />
-        <Container fluid>
-          <Grid container>
-            <Grid.Row>
-              <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
-                <Jumbotron />
-                <ImageInput
-                  onUrlInputSubmit={this.onUrlInputSubmit}
-                  onUploadImage={this.onUploadImage}
-                  isUploadingImage={isUploadingImage}
-                />
-                <Results
-                  imageUrl={imageUrl}
-                  colors={colors}
-                  isLoadingResults={isLoadingResults}
-                  errors={errors}
-                />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          <Footer />
-        </Container>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Navbar />
+      <Container fluid>
+        <Grid container>
+          <Grid.Row>
+            <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
+              <Jumbotron />
+              <ImageInput
+                onUrlInputSubmit={onUrlInputSubmit}
+                onUploadImage={onUploadImage}
+                isUploadingImage={isUploadingImage}
+              />
+              <Results
+                imageUrl={imageUrl}
+                colors={colors}
+                isLoadingResults={isLoadingResults}
+                errors={errors}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Footer />
+      </Container>
+    </>
+  );
+};
 
 export default App;

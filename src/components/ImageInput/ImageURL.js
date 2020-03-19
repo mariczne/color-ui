@@ -1,42 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Form } from "semantic-ui-react";
 
-class ImageURL extends React.Component {
-  state = { urlInput: "" };
+const ImageURL = ({ onUrlInputSubmit }) => {
+  const [urlInput, setUrlInput] = useState("");
 
-  onUrlInputChange = event => {
-    this.setState({ urlInput: event.target.value });
+  const onUrlInputChange = event => {
+    setUrlInput(event.target.value);
   };
 
-  onUrlInputSubmit = event => {
-    event.preventDefault();
-
-    const { onUrlInputSubmit } = this.props;
-    const { urlInput } = this.state;
-    onUrlInputSubmit(urlInput);
-  };
-
-  render() {
-    const { urlInput } = this.state;
-
-    return (
-      <Form onSubmit={this.onUrlInputSubmit}>
-        <Input
-          action={{
-            color: "teal",
-            labelPosition: "left",
-            icon: "file image",
-            content: "Submit"
-          }}
-          placeholder="Image URL"
-          fluid
-          onChange={this.onUrlInputChange}
-          value={urlInput}
-          type="url"
-        />
-      </Form>
-    );
-  }
-}
+  return (
+    <Form onSubmit={() => onUrlInputSubmit(urlInput)}>
+      <Input
+        action={{
+          color: "teal",
+          labelPosition: "left",
+          icon: "file image",
+          content: "Submit"
+        }}
+        placeholder="Image URL"
+        fluid
+        onChange={onUrlInputChange}
+        value={urlInput}
+        type="url"
+      />
+    </Form>
+  );
+};
 
 export default ImageURL;

@@ -1,9 +1,7 @@
 import React from "react";
 import { Segment, Message, Icon } from "semantic-ui-react";
 
-function ErrorMessage(props) {
-  const { error } = props;
-
+const ErrorMessage = ({ error }) => {
   return (
     <Segment>
       <Message negative icon>
@@ -15,6 +13,6 @@ function ErrorMessage(props) {
       </Message>
     </Segment>
   );
-}
+};
 
 export default ErrorMessage;

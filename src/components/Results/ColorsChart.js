@@ -29,9 +29,7 @@ const prepareDataForChart = data => {
   return preparedData;
 };
 
-const ColorsChart = props => {
-  const { colors } = props;
-
+const ColorsChart = ({ colors }) => {
   return (
     <div
       className="chart"

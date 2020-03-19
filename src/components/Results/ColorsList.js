@@ -2,9 +2,7 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 import Color from "./Color";
 
-const ColorsList = props => {
-  const { colors } = props;
-
+const ColorsList = ({ colors }) => {
   if (colors.length < 1) {
     return <div style={{ height: "100px" }} />;
   }

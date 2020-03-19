@@ -2,9 +2,7 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 import * as clipboard from "clipboard-polyfill/build/clipboard-polyfill.promise";
 
-const Color = props => {
-  const { color } = props;
-
+const Color = ({ color }) => {
   const cellStyle = {
     backgroundImage: `linear-gradient(to right, ${color.raw_hex}, ${color.raw_hex})`,
     cursor: "copy"

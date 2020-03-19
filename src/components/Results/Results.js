@@ -4,9 +4,7 @@ import ColorsChart from "./ColorsChart";
 import ColorsList from "./ColorsList";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-const Results = props => {
-  const { imageUrl, colors, isLoadingResults, errors } = props;
-
+const Results = ({ imageUrl, colors, isLoadingResults, errors }) => {
   if (!imageUrl && colors.length < 1 && errors.length < 1) {
     return null;
   }
