@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://mariczne.github.io/color-ui/precache-manifest.78f9424effbad2564811f8513652bdc8.js"
+  "https://mariczne.github.io/color-ui/precache-manifest.436a2feded30d4473b0425ccce02fedd.js"
 );
 
 workbox.clientsClaim();
