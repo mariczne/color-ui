@@ -1,20 +1,20 @@
-import React from 'react';
-import { Input, Form } from 'semantic-ui-react';
+import React from "react";
+import { Input, Form } from "semantic-ui-react";
 
 class ImageURL extends React.Component {
-  state = { urlInput: '' };
+  state = { urlInput: "" };
 
-  onUrlInputChange = (event) => {
+  onUrlInputChange = event => {
     this.setState({ urlInput: event.target.value });
   };
 
-  onUrlInputSubmit = (event) => {
+  onUrlInputSubmit = event => {
     event.preventDefault();
 
     const { onUrlInputSubmit } = this.props;
     const { urlInput } = this.state;
     onUrlInputSubmit(urlInput);
-  }
+  };
 
   render() {
     const { urlInput } = this.state;
@@ -23,7 +23,10 @@ class ImageURL extends React.Component {
       <Form onSubmit={this.onUrlInputSubmit}>
         <Input
           action={{
-            color: 'teal', labelPosition: 'left', icon: 'file image', content: 'Submit',
+            color: "teal",
+            labelPosition: "left",
+            icon: "file image",
+            content: "Submit"
           }}
           placeholder="Image URL"
           fluid

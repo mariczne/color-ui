@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => (
-  <footer style={{ margin: '14px auto', textAlign: 'center', width: '100%' }}>
+  <footer style={{ margin: "14px auto", textAlign: "center", width: "100%" }}>
     <small>
       <span>
         &copy; 2019

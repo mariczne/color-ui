@@ -1,9 +1,9 @@
-import React from 'react';
-import { Segment, Divider } from 'semantic-ui-react';
-import ImageUpload from './ImageUpload';
-import ImageURL from './ImageURL';
+import React from "react";
+import { Segment, Divider } from "semantic-ui-react";
+import ImageUpload from "./ImageUpload";
+import ImageURL from "./ImageURL";
 
-const ImageInput = (props) => {
+const ImageInput = props => {
   const { onUrlInputSubmit, onUploadImage, isUploadingImage } = props;
 
   return (
@@ -19,6 +19,5 @@ const ImageInput = (props) => {
     </Segment>
   );
 };
-
 
 export default ImageInput;

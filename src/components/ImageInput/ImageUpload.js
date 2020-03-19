@@ -1,23 +1,21 @@
-import React from 'react';
-import {
-  Button, Grid, Form, Segment, Item,
-} from 'semantic-ui-react';
-import axios from 'axios';
+import React from "react";
+import { Button, Grid, Form, Segment, Item } from "semantic-ui-react";
+import axios from "axios";
 
 class ImageUpload extends React.Component {
   state = {
-    image: null,
-  }
+    image: null
+  };
 
-  onUploadImageChange = (event) => {
+  onUploadImageChange = event => {
     if (event.target.files.length > 0) {
       this.setState({
-        image: event.target.files[0],
+        image: event.target.files[0]
       });
     }
   };
 
-  onUploadImageSubmit = (event) => {
+  onUploadImageSubmit = event => {
     event.preventDefault();
 
     const { onUploadImage } = this.props;
@@ -26,15 +24,18 @@ class ImageUpload extends React.Component {
 
     // convert image referred to by ObjectURL to base64 string and pass it to App component
     axios({
-      method: 'get',
+      method: "get",
       url: uploadedImageLocalUrl,
-      responseType: 'blob',
-    }).then((response) => {
+      responseType: "blob"
+    }).then(response => {
       const reader = new FileReader();
       reader.readAsDataURL(response.data);
       reader.onloadend = () => {
         const base64data = reader.result.toString();
-        onUploadImage(base64data.substr(base64data.indexOf(',') + 1), uploadedImageLocalUrl);
+        onUploadImage(
+          base64data.substr(base64data.indexOf(",") + 1),
+          uploadedImageLocalUrl
+        );
       };
     });
   };
@@ -44,12 +45,26 @@ class ImageUpload extends React.Component {
     const { image } = this.state;
 
     return (
-      <Segment compact style={{ margin: '14px auto 0px' }} loading={isUploadingImage}>
+      <Segment
+        compact
+        style={{ margin: "14px auto 0px" }}
+        loading={isUploadingImage}
+      >
         <Item.Group>
-          <Item style={{ margin: '0px' }}>
+          <Item style={{ margin: "0px" }}>
             <Item.Content>
-              <Item.Header style={{ wordBreak: 'break-all' }}>{image.name}</Item.Header>
-              <Item.Extra><Button type="submit" content="Upload" icon="upload" labelPosition="left" color="teal" /></Item.Extra>
+              <Item.Header style={{ wordBreak: "break-all" }}>
+                {image.name}
+              </Item.Header>
+              <Item.Extra>
+                <Button
+                  type="submit"
+                  content="Upload"
+                  icon="upload"
+                  labelPosition="left"
+                  color="teal"
+                />
+              </Item.Extra>
             </Item.Content>
           </Item>
         </Item.Group>
@@ -63,7 +78,13 @@ class ImageUpload extends React.Component {
       <Grid>
         <Grid.Column textAlign="center">
           <Form onSubmit={this.onUploadImageSubmit}>
-            <Button content="Select image to upload" icon="disk" labelPosition="left" as="label" htmlFor="file" />
+            <Button
+              content="Select image to upload"
+              icon="disk"
+              labelPosition="left"
+              as="label"
+              htmlFor="file"
+            />
             <input
               type="file"
               id="file"

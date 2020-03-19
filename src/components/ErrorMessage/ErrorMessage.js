@@ -1,7 +1,5 @@
-import React from 'react';
-import {
-  Segment, Message, Icon,
-} from 'semantic-ui-react';
+import React from "react";
+import { Segment, Message, Icon } from "semantic-ui-react";
 
 function ErrorMessage(props) {
   const { error } = props;
