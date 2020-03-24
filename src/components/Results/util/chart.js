@@ -1,7 +1,7 @@
 export function prepareColorsForChart(colors) {
   const preparedData = {
     labels: [],
-    datasets: [{ colors }]
+    datasets: [{ ...colors }]
   };
 
   preparedData.labels = colors.map(

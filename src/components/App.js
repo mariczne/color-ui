@@ -17,6 +17,7 @@ const App = () => {
 
   const onUploadImage = ({ base64, imageUrl }) => {
     setImageUrl(imageUrl);
+    
     if (base64) {
       onImageSubmit({ base64 });
     } else {
@@ -29,13 +30,13 @@ const App = () => {
     setColors([]);
     setErrors([]);
 
-    let colors;
     try {
-      colors = await fetchColors(config);
+      const colors = await fetchColors(config);
       setColors(colors);
     } catch (error) {
       handleError(error);
     }
+
     setIsLoadingResults(false);
   };
 
