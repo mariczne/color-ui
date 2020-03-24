@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "748d26383fd5db36bf2b",
-    "url": "https://mariczne.github.io/color-ui/static/js/main.748d2638.chunk.js"
+    "revision": "2e98f65567baa3f74cfe",
+    "url": "https://mariczne.github.io/color-ui/static/js/main.2e98f655.chunk.js"
   },
   {
-    "revision": "aba1c5320d0ec19c72ab",
-    "url": "https://mariczne.github.io/color-ui/static/css/1.c1557dd5.chunk.css"
+    "revision": "115b27d4f0718cf34512",
+    "url": "https://mariczne.github.io/color-ui/static/css/1.53ed4e52.chunk.css"
   },
   {
-    "revision": "aba1c5320d0ec19c72ab",
-    "url": "https://mariczne.github.io/color-ui/static/js/1.aba1c532.chunk.js"
+    "revision": "115b27d4f0718cf34512",
+    "url": "https://mariczne.github.io/color-ui/static/js/1.115b27d4.chunk.js"
   },
   {
     "revision": "2605acdeef98160beb25",
@@ -40,16 +40,16 @@ self.__precacheManifest = [
     "url": "https://mariczne.github.io/color-ui/static/media/outline-icons.cd6c777f.woff2"
   },
   {
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "https://mariczne.github.io/color-ui/static/media/outline-icons.ad97afd3.ttf"
+  },
+  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "https://mariczne.github.io/color-ui/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "https://mariczne.github.io/color-ui/static/media/outline-icons.ef60a4f6.woff"
-  },
-  {
-    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
-    "url": "https://mariczne.github.io/color-ui/static/media/outline-icons.ad97afd3.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "https://mariczne.github.io/color-ui/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "e61967621b752b04ae14325111211484",
+    "revision": "12ecb9bcdbddc5f15874ed931d82f71f",
     "url": "https://mariczne.github.io/color-ui/index.html"
   }
 ];
