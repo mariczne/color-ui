@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL =
-  "https://api.clarifai.om/v2/models/eeed0b6733a644cea07cf4c60f87ebb7/outputs";
+  "https://api.clarifai.com/v2/models/eeed0b6733a644cea07cf4c60f87ebb7/outputs";
 
 export async function fetchColors(imageSource) {
   const headers = {
