@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Grid, Form, Segment, Item } from "semantic-ui-react";
-import { convertImageToBase64 } from "../../util/image";
+import { convertImageToBase64 } from "../../utilities/image";
 
 const ImageUpload = ({ onUploadImage }) => {
   const [image, setImage] = useState(null);

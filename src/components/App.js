@@ -7,7 +7,7 @@ import Results from "./Results/Results";
 import Footer from "./Footer/Footer";
 import ErrorMessages from "./ErrorMessages/ErrorMessages";
 
-import { fetchColors } from "../util/clarifai.js";
+import { fetchColors } from "../utilities/clarifai.js";
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -25,13 +25,13 @@ const App = () => {
     }
   };
 
-  const onImageSubmit = async config => {
+  const onImageSubmit = async imageSource => {
     setIsLoadingResults(true);
     setColors([]);
     setErrors([]);
 
     try {
-      const colors = await fetchColors(config);
+      const colors = await fetchColors(imageSource);
       setColors(colors);
     } catch (error) {
       handleError(error);
@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const handleError = error => {
-    setErrors([...errors, error]);
+    setErrors([error]);
   };
 
   const isAnyErrorPresent = errors.length > 0;
