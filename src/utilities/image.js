@@ -9,12 +9,11 @@ export async function convertImageToBase64(image) {
   });
 
   return new Promise((resolve, reject) => {
-    let base64 = "";
     const reader = new FileReader();
     reader.readAsDataURL(imageBlob.data);
     reader.onloadend = () => {
       const base64data = reader.result.toString();
-      base64 = reader.result.toString().substr(base64data.indexOf(",") + 1);
+      const base64 = base64data.substr(base64data.indexOf(",") + 1);
       resolve(base64);
     };
     reader.onerror = err => {

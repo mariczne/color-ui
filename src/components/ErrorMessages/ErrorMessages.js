@@ -4,9 +4,9 @@ import ErrorMessage from "./ErrorMessage";
 const ErrorMessages = ({ errors }) => {
   return (
     <>
-      {errors.map(error => {
-        return <ErrorMessage key={error} error={error} />;
-      })}
+      {errors.map(error => (
+        <ErrorMessage key={error} error={error} />
+      ))}
     </>
   );
 };

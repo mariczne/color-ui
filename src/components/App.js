@@ -11,13 +11,14 @@ import { fetchColors } from "../utilities/clarifai.js";
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState("");
+  const [uploadProgress, setUploadProgress] = useState(() => null);
   const [isLoadingResults, setIsLoadingResults] = useState(false);
   const [colors, setColors] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const onUploadImage = ({ base64, imageUrl }) => {
     setImageUrl(imageUrl);
-    
+
     if (base64) {
       onImageSubmit({ base64 });
     } else {
@@ -31,7 +32,7 @@ const App = () => {
     setErrors([]);
 
     try {
-      const colors = await fetchColors(imageSource);
+      const colors = await fetchColors(imageSource, setUploadProgress);
       setColors(colors);
     } catch (error) {
       handleError(error);
@@ -55,7 +56,11 @@ const App = () => {
             <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
               <Jumbotron />
               {isAnyErrorPresent && <ErrorMessages errors={errors} />}
-              <ImageInput onUploadImage={onUploadImage} />
+              <ImageInput
+                onUploadImage={onUploadImage}
+                uploadProgress={uploadProgress}
+                setUploadProgress={setUploadProgress}
+              />
               <Results
                 imageUrl={imageUrl}
                 colors={colors}

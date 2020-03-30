@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Button, Grid, Form, Segment, Item } from "semantic-ui-react";
+import { Button, Grid, Form, Segment, Item, Progress } from "semantic-ui-react";
 import { convertImageToBase64 } from "../../utilities/image";
 
-const ImageUpload = ({ onUploadImage }) => {
+const ImageUpload = ({ onUploadImage, uploadProgress, setUploadProgress }) => {
   const [image, setImage] = useState(null);
 
   const onUploadImageChange = event => {
     if (event.target.files.length > 0) {
       setImage(event.target.files[0]);
     }
+    setUploadProgress(null);
   };
 
   const onUploadImageSubmit = async event => {
@@ -24,7 +25,9 @@ const ImageUpload = ({ onUploadImage }) => {
     <Grid>
       <Grid.Column textAlign="center">
         <Form onSubmit={onUploadImageSubmit}>
-          {image ? <FileInfo imageName={image.name} /> : null}
+          {image && (
+            <FileInfo imageName={image.name} uploadProgress={uploadProgress} />
+          )}
           <Button
             content="Select image to upload"
             icon="disk"
@@ -47,7 +50,7 @@ const ImageUpload = ({ onUploadImage }) => {
 
 export default ImageUpload;
 
-const FileInfo = ({ imageName }) => {
+const FileInfo = ({ imageName, uploadProgress }) => {
   return (
     <Segment compact style={{ margin: "0px auto 14px" }}>
       <Item.Group>
@@ -57,6 +60,13 @@ const FileInfo = ({ imageName }) => {
               {imageName}
             </Item.Header>
             <Item.Extra>
+              {uploadProgress ? (
+                <Progress
+                  percent={uploadProgress}
+                  indicating={uploadProgress > 100}
+                  autoSuccess
+                />
+              ) : null}
               <Button
                 type="submit"
                 content="Upload"

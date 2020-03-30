@@ -8,10 +8,10 @@ const ErrorMessage = ({ error }) => {
       <Message.Content>
         <Message.Header>{error.toString()}</Message.Header>
         <p style={{ wordBreak: "break-word" }}>
-          {error.response?.data?.outputs[0]?.status?.details}
+          {error.response?.data?.outputs?.[0]?.status?.details}
         </p>
         <p style={{ wordBreak: "break-word" }}>
-          {error.response?.data?.outputs[0]?.status?.description}
+          {error.response?.data?.outputs?.[0]?.status?.description}
         </p>
       </Message.Content>
     </Message>
