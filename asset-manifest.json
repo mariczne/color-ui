@@ -1,10 +1,19 @@
 {
-  "main.js": "https://mariczne.github.io/color-ui/static/js/main.2e98f655.chunk.js",
-  "static/css/1.53ed4e52.chunk.css": "https://mariczne.github.io/color-ui/static/css/1.53ed4e52.chunk.css",
-  "static/js/1.115b27d4.chunk.js": "https://mariczne.github.io/color-ui/static/js/1.115b27d4.chunk.js",
-  "runtime~main.js": "https://mariczne.github.io/color-ui/static/js/runtime~main.2605acde.js",
-  "static/media/semantic.min.css": "https://mariczne.github.io/color-ui/static/media/brand-icons.a1a749e8.svg",
-  "index.html": "https://mariczne.github.io/color-ui/index.html",
-  "precache-manifest.9469973de0a657ec56b16a90a064f211.js": "https://mariczne.github.io/color-ui/precache-manifest.9469973de0a657ec56b16a90a064f211.js",
-  "service-worker.js": "https://mariczne.github.io/color-ui/service-worker.js"
+  "files": {
+    "main.js": "https://mariczne.github.io/color-ui/static/js/main.ef6c924c.chunk.js",
+    "runtime-main.js": "https://mariczne.github.io/color-ui/static/js/runtime-main.3c668a09.js",
+    "static/css/2.80b2a145.chunk.css": "https://mariczne.github.io/color-ui/static/css/2.80b2a145.chunk.css",
+    "static/js/2.3be21fee.chunk.js": "https://mariczne.github.io/color-ui/static/js/2.3be21fee.chunk.js",
+    "index.html": "https://mariczne.github.io/color-ui/index.html",
+    "precache-manifest.28f96853364d5db4f56e5425e6e42157.js": "https://mariczne.github.io/color-ui/precache-manifest.28f96853364d5db4f56e5425e6e42157.js",
+    "service-worker.js": "https://mariczne.github.io/color-ui/service-worker.js",
+    "static/js/2.3be21fee.chunk.js.LICENSE.txt": "https://mariczne.github.io/color-ui/static/js/2.3be21fee.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "https://mariczne.github.io/color-ui/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3c668a09.js",
+    "static/css/2.80b2a145.chunk.css",
+    "static/js/2.3be21fee.chunk.js",
+    "static/js/main.ef6c924c.chunk.js"
+  ]
 }
