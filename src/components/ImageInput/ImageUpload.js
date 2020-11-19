@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Grid, Form, Segment, Item, Progress } from "semantic-ui-react";
 import { convertImageToBase64 } from "../../utilities/image";
 
 const ImageUpload = ({ onUploadImage, uploadProgress, setUploadProgress }) => {
   const [image, setImage] = useState(null);
+  const fileInputRef = useRef(null);
 
-  const onUploadImageChange = event => {
+  const onUploadImageChange = (event) => {
     if (event.target.files.length > 0) {
       setImage(event.target.files[0]);
     }
     setUploadProgress(null);
   };
 
-  const onUploadImageSubmit = async event => {
+  const onUploadImageSubmit = async (event) => {
     event.preventDefault();
 
     const imageUrl = URL.createObjectURL(image);
@@ -29,13 +30,14 @@ const ImageUpload = ({ onUploadImage, uploadProgress, setUploadProgress }) => {
             <FileInfo imageName={image.name} uploadProgress={uploadProgress} />
           )}
           <Button
+            type="button"
             content="Select image to upload"
             icon="disk"
             labelPosition="left"
-            as="label"
-            htmlFor="file"
+            onClick={() => fileInputRef.current?.click()}
           />
           <input
+            ref={fileInputRef}
             type="file"
             id="file"
             hidden
@@ -73,6 +75,7 @@ const FileInfo = ({ imageName, uploadProgress }) => {
                 icon="upload"
                 labelPosition="left"
                 color="teal"
+                autoFocus
               />
             </Item.Extra>
           </Item.Content>
