@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://mariczne.github.io/color-ui/precache-manifest.28f96853364d5db4f56e5425e6e42157.js"
+  "https://mariczne.github.io/color-ui/precache-manifest.e1194d239fc889e4e54ad8dc27c8c765.js"
 );
 
 self.addEventListener('message', (event) => {

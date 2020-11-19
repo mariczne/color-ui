@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "74ca112012c74b1305459d2ea90cf9bc",
+    "revision": "3c4f76cea251bcfa61646debea0a38eb",
     "url": "https://mariczne.github.io/color-ui/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://mariczne.github.io/color-ui/static/js/2.3be21fee.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "126c7fbf3d5b1279abef",
-    "url": "https://mariczne.github.io/color-ui/static/js/main.ef6c924c.chunk.js"
+    "revision": "2560fdb7b7ee20eec0b2",
+    "url": "https://mariczne.github.io/color-ui/static/js/main.2dafcd3d.chunk.js"
   },
   {
     "revision": "c71414f17e5fcf9570a2",
