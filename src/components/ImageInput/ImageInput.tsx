@@ -1,7 +1,7 @@
 import { Segment, Divider } from "semantic-ui-react";
+import { ImageUpload } from "./ImageUpload";
+import { ImageURL } from "./ImageURL";
 import { ImageSource } from "utilities/clarifai";
-import ImageUpload from "./ImageUpload";
-import ImageURL from "./ImageURL";
 
 export interface ImageInputProps {
   onUploadImage: (imageSource: ImageSource) => void;
@@ -27,4 +27,4 @@ const ImageInput = ({
   );
 };
 
-export default ImageInput;
+export { ImageInput };

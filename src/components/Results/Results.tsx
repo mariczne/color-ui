@@ -1,6 +1,6 @@
 import { Segment, Grid, Image } from "semantic-ui-react";
-import ColorsChart from "./ColorsChart";
-import ColorsList from "./ColorsList";
+import { ColorsChart } from "./ColorsChart";
+import { ColorsList } from "./ColorsList";
 import { Color } from "types/Color";
 
 export interface ResultsProps {
@@ -66,4 +66,4 @@ const Results = ({
   );
 };
 
-export default Results;
+export { Results };

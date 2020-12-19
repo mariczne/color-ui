@@ -35,15 +35,28 @@ const ColorsChart = ({ colors }: Pick<ResultsProps, "colors">) => {
           },
           tooltips: {
             callbacks: {
-              label(tooltipItem, data) {
-                // const dataset = data.datasets[tooltipItem.datasetIndex];
-                // const label = dataset.data[tooltipItem.index];
-                // return ` ${label}%`;
-                return "";
+              label({ index, datasetIndex }, { datasets }) {
+                if (
+                  (!index && index !== 0) ||
+                  (!datasetIndex && datasetIndex !== 0)
+                ) {
+                  return "";
+                }
+
+                if (!datasets) return "";
+                const dataset = datasets[datasetIndex];
+
+                if (!dataset || !dataset.data) return "";
+                const label = dataset.data[index];
+
+                return ` ${label}%`;
               },
-              title(tooltipItem, data) {
-                // return data.labels[tooltipItem[0].index];
-                return "";
+              title(tooltipItems, data) {
+                const item = tooltipItems[0];
+                if (!item || (!item.index && item.index !== 0)) return "";
+                if (!data.labels) return "";
+
+                return String(data.labels[item.index]);
               },
             },
           },
@@ -53,4 +66,4 @@ const ColorsChart = ({ colors }: Pick<ResultsProps, "colors">) => {
   );
 };
 
-export default ColorsChart;
+export { ColorsChart };

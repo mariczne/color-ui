@@ -39,4 +39,4 @@ const FileInfo = ({ imageName, uploadProgress }: FileInfoProps) => {
   );
 };
 
-export default FileInfo
+export { FileInfo };

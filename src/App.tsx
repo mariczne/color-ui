@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Container, Grid } from "semantic-ui-react";
-import Navbar from "components/Navbar/Navbar";
-import Jumbotron from "components/Jumbotron/Jumbotron";
-import ImageInput from "components/ImageInput/ImageInput";
-import Results from "components/Results/Results";
-import Footer from "components/Footer/Footer";
-import ErrorMessages from "components/ErrorMessages/ErrorMessages";
+import { Navbar } from "components/Navbar";
+import { Jumbotron } from "components/Jumbotron";
+import { ImageInput } from "components/ImageInput";
+import { Results } from "components/Results";
+import { Footer } from "components/Footer";
+import { ErrorMessages } from "components/ErrorMessages";
 import { fetchColors, ImageSource } from "utilities/clarifai";
 import { Color } from "types/Color";
 import { ClarifaiError } from "types/ClarifaiError";
@@ -75,4 +75,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { App };
