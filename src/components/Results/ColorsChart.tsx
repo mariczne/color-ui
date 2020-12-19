@@ -1,7 +1,8 @@
 import { Pie } from "react-chartjs-2";
-import { prepareColorsForChart } from "./utilities/chart.js";
+import { ResultsProps } from "./Results";
+import { prepareColorsForChart } from "./utilities/chart";
 
-const ColorsChart = ({ colors }) => {
+const ColorsChart = ({ colors }: Pick<ResultsProps, "colors">) => {
   return (
     <div
       className="chart"
@@ -9,7 +10,7 @@ const ColorsChart = ({ colors }) => {
         position: "relative",
         margin: "auto",
         height: "100%",
-        width: "100%"
+        width: "100%",
       }}
     >
       <Pie
@@ -17,11 +18,11 @@ const ColorsChart = ({ colors }) => {
         options={{
           legend: {
             display: false,
-            position: "right"
+            position: "right",
           },
           title: {
             display: false,
-            text: "Color composition"
+            text: "Color composition",
           },
           responsive: true,
           maintainAspectRatio: false,
@@ -29,21 +30,23 @@ const ColorsChart = ({ colors }) => {
           elements: {
             arc: {
               borderColor: "#dedede",
-              borderWidth: 1
-            }
+              borderWidth: 1,
+            },
           },
           tooltips: {
             callbacks: {
               label(tooltipItem, data) {
-                const dataset = data.datasets[tooltipItem.datasetIndex];
-                const label = dataset.data[tooltipItem.index];
-                return ` ${label}%`;
+                // const dataset = data.datasets[tooltipItem.datasetIndex];
+                // const label = dataset.data[tooltipItem.index];
+                // return ` ${label}%`;
+                return "";
               },
               title(tooltipItem, data) {
-                return data.labels[tooltipItem[0].index];
-              }
-            }
-          }
+                // return data.labels[tooltipItem[0].index];
+                return "";
+              },
+            },
+          },
         }}
       />
     </div>

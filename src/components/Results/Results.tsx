@@ -1,8 +1,21 @@
 import { Segment, Grid, Image } from "semantic-ui-react";
 import ColorsChart from "./ColorsChart";
 import ColorsList from "./ColorsList";
+import { Color } from "types/Color";
 
-const Results = ({ imageUrl, colors, isLoadingResults, isAnyErrorPresent }) => {
+export interface ResultsProps {
+  imageUrl: string;
+  colors: Color[];
+  isLoadingResults: boolean;
+  isAnyErrorPresent: boolean;
+}
+
+const Results = ({
+  imageUrl,
+  colors,
+  isLoadingResults,
+  isAnyErrorPresent,
+}: ResultsProps) => {
   if (!imageUrl && colors.length < 1 && !isAnyErrorPresent) {
     return null;
   }
@@ -21,7 +34,7 @@ const Results = ({ imageUrl, colors, isLoadingResults, isAnyErrorPresent }) => {
             style={{
               display: "flex",
               alignItems: "center",
-              minHeight: "100px"
+              minHeight: "100px",
             }}
           >
             <Image

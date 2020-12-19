@@ -1,32 +1,31 @@
 import { useState } from "react";
 import { Container, Grid } from "semantic-ui-react";
-import Navbar from "./Navbar/Navbar";
-import Jumbotron from "./Jumbotron/Jumbotron";
-import ImageInput from "./ImageInput/ImageInput";
-import Results from "./Results/Results";
-import Footer from "./Footer/Footer";
-import ErrorMessages from "./ErrorMessages/ErrorMessages";
-
-import { fetchColors } from "../utilities/clarifai.js";
+import Navbar from "components/Navbar/Navbar";
+import Jumbotron from "components/Jumbotron/Jumbotron";
+import ImageInput from "components/ImageInput/ImageInput";
+import Results from "components/Results/Results";
+import Footer from "components/Footer/Footer";
+import ErrorMessages from "components/ErrorMessages/ErrorMessages";
+import { fetchColors, ImageSource } from "utilities/clarifai";
+import { Color } from "types/Color";
+import { ClarifaiError } from "types/ClarifaiError";
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState("");
-  const [uploadProgress, setUploadProgress] = useState(() => null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(
+    () => null
+  );
   const [isLoadingResults, setIsLoadingResults] = useState(false);
-  const [colors, setColors] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const [colors, setColors] = useState<Color[]>([]);
+  const [errors, setErrors] = useState<ClarifaiError[]>([]);
 
-  const onUploadImage = ({ base64, imageUrl }) => {
-    setImageUrl(imageUrl);
+  const onUploadImage = ({ url, base64 }: ImageSource) => {
+    setImageUrl(url);
 
-    if (base64) {
-      onImageSubmit({ base64 });
-    } else {
-      onImageSubmit({ url: imageUrl });
-    }
+    onImageSubmit({ url, base64 });
   };
 
-  const onImageSubmit = async imageSource => {
+  const onImageSubmit = async (imageSource: ImageSource) => {
     setIsLoadingResults(true);
     setColors([]);
     setErrors([]);
@@ -41,7 +40,7 @@ const App = () => {
     setIsLoadingResults(false);
   };
 
-  const handleError = error => {
+  const handleError = (error: any) => {
     setErrors([error]);
   };
 
