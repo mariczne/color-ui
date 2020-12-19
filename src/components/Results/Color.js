@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import * as clipboard from "clipboard-polyfill/build/clipboard-polyfill.promise";
+import * as clipboard from "clipboard-polyfill/text";
 
 const Color = ({ color }) => {
   const cellStyle = {
