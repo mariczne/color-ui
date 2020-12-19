@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/color-ui/static/js/main.10cb56fc.chunk.js",
-    "main.js.map": "/color-ui/static/js/main.10cb56fc.chunk.js.map",
+    "main.js": "/color-ui/static/js/main.a902abdf.chunk.js",
+    "main.js.map": "/color-ui/static/js/main.a902abdf.chunk.js.map",
     "runtime-main.js": "/color-ui/static/js/runtime-main.b56bfbf5.js",
     "runtime-main.js.map": "/color-ui/static/js/runtime-main.b56bfbf5.js.map",
     "static/css/2.829b24a6.chunk.css": "/color-ui/static/css/2.829b24a6.chunk.css",
-    "static/js/2.54d5390c.chunk.js": "/color-ui/static/js/2.54d5390c.chunk.js",
-    "static/js/2.54d5390c.chunk.js.map": "/color-ui/static/js/2.54d5390c.chunk.js.map",
+    "static/js/2.2c95a700.chunk.js": "/color-ui/static/js/2.2c95a700.chunk.js",
+    "static/js/2.2c95a700.chunk.js.map": "/color-ui/static/js/2.2c95a700.chunk.js.map",
     "index.html": "/color-ui/index.html",
     "static/css/2.829b24a6.chunk.css.map": "/color-ui/static/css/2.829b24a6.chunk.css.map",
-    "static/js/2.54d5390c.chunk.js.LICENSE.txt": "/color-ui/static/js/2.54d5390c.chunk.js.LICENSE.txt",
+    "static/js/2.2c95a700.chunk.js.LICENSE.txt": "/color-ui/static/js/2.2c95a700.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/color-ui/static/media/outline-icons.ddae9b1b.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b56bfbf5.js",
     "static/css/2.829b24a6.chunk.css",
-    "static/js/2.54d5390c.chunk.js",
-    "static/js/main.10cb56fc.chunk.js"
+    "static/js/2.2c95a700.chunk.js",
+    "static/js/main.a902abdf.chunk.js"
   ]
 }
