@@ -1,21 +1,24 @@
 import { useState } from "react";
 import { Input, Form } from "semantic-ui-react";
+import { ImageInputProps } from "./ImageInput";
 
-const ImageURL = ({ onUploadImage }) => {
+export type ImageURLProps = Pick<ImageInputProps, "onUploadImage">
+
+const ImageURL = ({ onUploadImage }: ImageURLProps) => {
   const [urlInput, setUrlInput] = useState("");
 
-  const onUrlInputChange = event => {
+  const onUrlInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUrlInput(event.target.value);
   };
 
   return (
-    <Form onSubmit={() => onUploadImage({ imageUrl: urlInput })}>
+    <Form onSubmit={() => onUploadImage({ url: urlInput })}>
       <Input
         action={{
           color: "teal",
           labelPosition: "left",
           icon: "file image",
-          content: "Submit"
+          content: "Submit",
         }}
         placeholder="Image URL"
         fluid

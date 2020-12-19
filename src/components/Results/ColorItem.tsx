@@ -1,17 +1,18 @@
 import { Table } from "semantic-ui-react";
 import * as clipboard from "clipboard-polyfill/text";
+import { Color } from "types/Color";
 
-const Color = ({ color }) => {
+const ColorItem = ({ color }: { color: Color }) => {
   const cellStyle = {
     backgroundImage: `linear-gradient(to right, ${color.raw_hex}, ${color.raw_hex})`,
-    cursor: "copy"
+    cursor: "copy",
   };
 
   const spanStyle = {
     background: "inherit",
     WebkitBackgroundClip: "text",
     color: "transparent",
-    filter: "invert(1) grayscale(1) contrast(999)"
+    filter: "invert(1) grayscale(1) contrast(999)",
   };
 
   const handleColorClick = () => {
@@ -35,4 +36,4 @@ const Color = ({ color }) => {
   );
 };
 
-export default Color;
+export default ColorItem;

@@ -1,6 +1,11 @@
 import { Message, Icon } from "semantic-ui-react";
+import { ClarifaiError } from "types/ClarifaiError";
 
-const ErrorMessage = ({ error }) => {
+export interface ErrorMessageProps {
+  error: ClarifaiError;
+}
+
+const ErrorMessage = ({ error }: ErrorMessageProps) => {
   return (
     <Message negative icon>
       <Icon name="x" />
