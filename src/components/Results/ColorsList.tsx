@@ -1,5 +1,5 @@
 import { Table } from "semantic-ui-react";
-import ColorItem from "./ColorItem";
+import { ColorItem } from "./ColorItem";
 import { ResultsProps } from "./Results";
 
 const ColorsList = ({ colors }: Pick<ResultsProps, "colors">) => {
@@ -18,4 +18,4 @@ const ColorsList = ({ colors }: Pick<ResultsProps, "colors">) => {
   );
 };
 
-export default ColorsList;
+export { ColorsList };

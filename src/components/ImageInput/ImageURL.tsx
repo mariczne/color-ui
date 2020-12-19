@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input, Form } from "semantic-ui-react";
 import { ImageInputProps } from "./ImageInput";
 
-export type ImageURLProps = Pick<ImageInputProps, "onUploadImage">
+export type ImageURLProps = Pick<ImageInputProps, "onUploadImage">;
 
 const ImageURL = ({ onUploadImage }: ImageURLProps) => {
   const [urlInput, setUrlInput] = useState("");
@@ -31,4 +31,4 @@ const ImageURL = ({ onUploadImage }: ImageURLProps) => {
   );
 };
 
-export default ImageURL;
+export { ImageURL };

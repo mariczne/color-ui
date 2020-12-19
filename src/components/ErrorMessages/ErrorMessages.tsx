@@ -1,4 +1,4 @@
-import ErrorMessage from "./ErrorMessage";
+import { ErrorMessage } from "./ErrorMessage";
 import { ClarifaiError } from "types/ClarifaiError";
 
 export interface ErrorMessagesProps {
@@ -15,4 +15,4 @@ const ErrorMessages = ({ errors }: ErrorMessagesProps) => {
   );
 };
 
-export default ErrorMessages;
+export { ErrorMessages };

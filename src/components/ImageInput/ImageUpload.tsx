@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Button, Grid, Form } from "semantic-ui-react";
 import { ImageInputProps } from "./ImageInput";
-import FileInfo from "./FileInfo"
+import { FileInfo } from "./FileInfo";
 import { convertImageToBase64 } from "../../utilities/image";
 
 const ImageUpload = ({
@@ -63,4 +63,4 @@ const ImageUpload = ({
   );
 };
 
-export default ImageUpload;
+export { ImageUpload };

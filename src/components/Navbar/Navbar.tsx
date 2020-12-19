@@ -17,4 +17,4 @@ const Navbar = () => (
   </Menu>
 );
 
-export default Navbar;
+export { Navbar };

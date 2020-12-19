@@ -36,4 +36,4 @@ const ColorItem = ({ color }: { color: Color }) => {
   );
 };
 
-export default ColorItem;
+export { ColorItem };
