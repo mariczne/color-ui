@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Button, Grid, Form, Segment, Item, Progress } from "semantic-ui-react";
 import { convertImageToBase64 } from "../../utilities/image";
 

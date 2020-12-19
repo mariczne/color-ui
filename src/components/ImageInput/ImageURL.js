@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Input, Form } from "semantic-ui-react";
 
 const ImageURL = ({ onUploadImage }) => {

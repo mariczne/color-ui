@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Message, Header } from "semantic-ui-react";
 
 const Jumbotron = () => {
