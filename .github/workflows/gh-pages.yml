@@ -16,6 +16,9 @@ jobs:
         run: |
           npm install
           npm run build
+        env:
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
@@ -24,6 +27,3 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build
           CLEAN: true
-        env:
-          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
