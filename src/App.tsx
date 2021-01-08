@@ -49,7 +49,7 @@ const App = () => {
             <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
               <Jumbotron
                 submitExampleImage={() =>
-                  onImageSubmit({ url: EXAMPLE_IMAGE_PATH })
+                  onUploadImage({ url: EXAMPLE_IMAGE_PATH })
                 }
               />
               {isAnyErrorPresent && <ErrorMessages errors={errors} />}

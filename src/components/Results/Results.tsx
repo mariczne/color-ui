@@ -8,7 +8,7 @@ export type ResultsProps = {
   colors: Color[];
   isLoadingResults: boolean;
   isAnyErrorPresent: boolean;
-}
+};
 
 const Results = ({
   imageUrl,

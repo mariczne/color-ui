@@ -7,7 +7,7 @@ export type ImageInputProps = {
   onUploadImage: (imageSource: ImageSource) => void;
   uploadProgress: number | null;
   setUploadProgress: (progres: number | null) => void;
-}
+};
 
 const ImageInput = ({
   onUploadImage,
