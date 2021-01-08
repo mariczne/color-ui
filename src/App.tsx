@@ -9,6 +9,8 @@ import { ErrorMessages } from "components/ErrorMessages";
 import { fetchColors, ImageSource } from "utilities/clarifai";
 import { Color, ClarifaiError } from "types";
 
+const EXAMPLE_IMAGE_PATH = `${process.env.PUBLIC_URL}/example.jpeg`;
+
 const App = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
@@ -45,7 +47,11 @@ const App = () => {
         <Grid container>
           <Grid.Row>
             <Grid.Column style={{ paddingLeft: 0, paddingRight: 0 }}>
-              <Jumbotron />
+              <Jumbotron
+                submitExampleImage={() =>
+                  onImageSubmit({ url: EXAMPLE_IMAGE_PATH })
+                }
+              />
               {isAnyErrorPresent && <ErrorMessages errors={errors} />}
               <ImageInput
                 onUploadImage={onUploadImage}
