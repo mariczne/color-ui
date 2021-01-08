@@ -1,10 +1,10 @@
 import { Segment, Item, Progress, Button } from "semantic-ui-react";
 import { ImageInputProps } from "./ImageInput";
 
-export interface FileInfoProps {
+export type FileInfoProps = {
   imageName: File["name"];
   uploadProgress: ImageInputProps["uploadProgress"];
-}
+};
 
 const FileInfo = ({ imageName, uploadProgress }: FileInfoProps) => {
   return (

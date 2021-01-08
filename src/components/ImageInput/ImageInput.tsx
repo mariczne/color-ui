@@ -3,7 +3,7 @@ import { ImageUpload } from "./ImageUpload";
 import { ImageURL } from "./ImageURL";
 import { ImageSource } from "utilities/clarifai";
 
-export interface ImageInputProps {
+export type ImageInputProps = {
   onUploadImage: (imageSource: ImageSource) => void;
   uploadProgress: number | null;
   setUploadProgress: (progres: number | null) => void;

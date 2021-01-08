@@ -10,25 +10,24 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-export interface ImageSource {
+export type ImageSource = {
   url: string;
   base64?: string;
-}
+};
 
 export async function fetchColors(
   imageSource: ImageSource,
   setUploadProgress: (progress: number) => void
 ) {
-  const isBase64 = Boolean(imageSource.base64);
-  const key = isBase64 ? "base64" : "url";
+  const { base64, url } = imageSource;
+  const isBase64 = Boolean(base64);
+  const image = isBase64 ? { base64 } : { url };
 
   const data = {
     inputs: [
       {
         data: {
-          image: {
-            [key]: isBase64 ? imageSource.base64 : imageSource.url,
-          },
+          image,
         },
       },
     ],

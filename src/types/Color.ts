@@ -1,4 +1,4 @@
-export interface Color {
+export type Color = {
   raw_hex: string;
   value: number;
   w3c: {

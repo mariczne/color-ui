@@ -1,9 +1,9 @@
 import { Message, Icon } from "semantic-ui-react";
-import { ClarifaiError } from "types/ClarifaiError";
+import { ClarifaiError } from "types";
 
-export interface ErrorMessageProps {
+export type ErrorMessageProps = {
   error: ClarifaiError;
-}
+};
 
 const ErrorMessage = ({ error }: ErrorMessageProps) => {
   return (

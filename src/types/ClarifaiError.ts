@@ -1,4 +1,4 @@
-export interface ClarifaiError {
+export type ClarifaiError = {
   response?: {
     data?: {
       outputs?: Array<{

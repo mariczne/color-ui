@@ -1,9 +1,9 @@
 import { ErrorMessage } from "./ErrorMessage";
-import { ClarifaiError } from "types/ClarifaiError";
+import { ClarifaiError } from "types";
 
-export interface ErrorMessagesProps {
+export type ErrorMessagesProps = {
   errors: ClarifaiError[];
-}
+};
 
 const ErrorMessages = ({ errors }: ErrorMessagesProps) => {
   return (

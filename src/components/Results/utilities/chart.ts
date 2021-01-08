@@ -2,9 +2,9 @@ import { lighten } from "color2k";
 import { ChartData, ChartDataSets } from "chart.js";
 import { Color } from "types/Color";
 
-export interface PreparedData extends ChartData {
+export type PreparedData = ChartData & {
   datasets: [ChartDataSets];
-}
+};
 
 export function prepareColorsForChart(colors: Color[]) {
   const preparedData: PreparedData = {

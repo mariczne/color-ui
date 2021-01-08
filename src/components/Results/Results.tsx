@@ -3,7 +3,7 @@ import { ColorsChart } from "./ColorsChart";
 import { ColorsList } from "./ColorsList";
 import { Color } from "types/Color";
 
-export interface ResultsProps {
+export type ResultsProps = {
   imageUrl: string;
   colors: Color[];
   isLoadingResults: boolean;

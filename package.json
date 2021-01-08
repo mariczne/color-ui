@@ -8,7 +8,7 @@
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "clipboard-polyfill": "^3.0.0",
     "color2k": "^1.1.1",
@@ -24,9 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,8 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://mariczne.github.io/color-ui",
-  "devDependencies": {
-    "gh-pages": "^2.2.0"
-  }
+  "homepage": "https://mariczne.github.io/color-ui"
 }
