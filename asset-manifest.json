@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://mariczne.github.io/color-ui/static/css/main.4835051d.chunk.css",
-    "main.js": "https://mariczne.github.io/color-ui/static/js/main.3113d1f5.chunk.js",
-    "main.js.map": "https://mariczne.github.io/color-ui/static/js/main.3113d1f5.chunk.js.map",
+    "main.js": "https://mariczne.github.io/color-ui/static/js/main.d630d16c.chunk.js",
+    "main.js.map": "https://mariczne.github.io/color-ui/static/js/main.d630d16c.chunk.js.map",
     "runtime-main.js": "https://mariczne.github.io/color-ui/static/js/runtime-main.abef19b9.js",
     "runtime-main.js.map": "https://mariczne.github.io/color-ui/static/js/runtime-main.abef19b9.js.map",
     "static/css/2.fedc71a0.chunk.css": "https://mariczne.github.io/color-ui/static/css/2.fedc71a0.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.fedc71a0.chunk.css",
     "static/js/2.23ba12a9.chunk.js",
     "static/css/main.4835051d.chunk.css",
-    "static/js/main.3113d1f5.chunk.js"
+    "static/js/main.d630d16c.chunk.js"
   ]
 }
